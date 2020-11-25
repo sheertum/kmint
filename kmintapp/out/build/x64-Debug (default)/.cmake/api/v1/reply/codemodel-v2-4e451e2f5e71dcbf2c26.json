@@ -1,0 +1,146 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "libkmint",
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "libkmint",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "sim",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.1.3"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "sim",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "kmintapp",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "libkmint",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "sim",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "dependencies::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dependencies-Debug-7650237d3f6b31866bfb.json",
+					"name" : "dependencies",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "kmint::@f27299fc9014d3bfd31c",
+					"jsonFile" : "target-kmint-Debug-a0a031ed8e0f251b0aab.json",
+					"name" : "kmint",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "sim::@b622755370c2a46d4cb5",
+					"jsonFile" : "target-sim-Debug-7a3f22331d575faa6d67.json",
+					"name" : "sim",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "sim-resources::@b622755370c2a46d4cb5",
+					"jsonFile" : "target-sim-resources-Debug-a393f2550485d65a60bf.json",
+					"name" : "sim-resources",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug (default)",
+		"source" : "C:/Users/Terence/source/KMINT/kmint/kmintapp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

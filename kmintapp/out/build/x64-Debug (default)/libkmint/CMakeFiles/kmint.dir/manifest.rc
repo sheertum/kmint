@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+2 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug (default)/libkmint/CMakeFiles/kmint.dir/embed.manifest"

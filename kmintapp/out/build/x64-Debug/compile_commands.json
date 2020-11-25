@@ -1,0 +1,103 @@
+[
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\map\\map.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\map\\map.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/map/map.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\random.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\random.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/random.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\play\\stage.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\play\\stage.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/play/stage.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\play\\actor.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\play\\actor.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/play/actor.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\play\\image_drawable.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\play\\image_drawable.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/play/image_drawable.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\ui\\app.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\ui\\app.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/ui/app.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\ui\\window.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\ui\\window.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/ui/window.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\ui\\renderer.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\ui\\renderer.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/ui/renderer.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\ui\\events\\event.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\ui\\events\\event.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/ui/events/event.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\ui\\sdl\\texture.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\ui\\sdl\\texture.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/ui/sdl/texture.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\graph\\graph.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\graph\\graph.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/graph/graph.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -Dkmint_EXPORTS -I..\\..\\..\\libkmint\\include -I..\\..\\..\\libkmint\\src -I..\\..\\..\\dependencies\\SDL2\\include -I..\\..\\..\\dependencies\\SDL2_image\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Folibkmint\\CMakeFiles\\kmint.dir\\src\\kmint\\math\\angle.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\libkmint\\src\\kmint\\math\\angle.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/libkmint/src/kmint/math/angle.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP  -I..\\..\\..\\sim\\src -I..\\..\\..\\sim\\include -I..\\..\\..\\libkmint\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Fosim\\CMakeFiles\\sim.dir\\src\\sim\\rectangle_drawable.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\sim\\src\\sim\\rectangle_drawable.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/sim/src/sim/rectangle_drawable.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP  -I..\\..\\..\\sim\\src -I..\\..\\..\\sim\\include -I..\\..\\..\\libkmint\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Fosim\\CMakeFiles\\sim.dir\\src\\sim\\hello_actor.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\sim\\src\\sim\\hello_actor.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/sim/src/sim/hello_actor.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP  -I..\\..\\..\\sim\\src -I..\\..\\..\\sim\\include -I..\\..\\..\\libkmint\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Fosim\\CMakeFiles\\sim.dir\\src\\sim\\cow.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\sim\\src\\sim\\cow.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/sim/src/sim/cow.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP  -I..\\..\\..\\sim\\src -I..\\..\\..\\sim\\include -I..\\..\\..\\libkmint\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Fosim\\CMakeFiles\\sim.dir\\src\\sim\\hare.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\sim\\src\\sim\\hare.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/sim/src/sim/hare.cpp"
+},
+
+{
+  "directory": "C:/Users/Terence/source/KMINT/kmint/kmintapp/out/build/x64-Debug",
+  "command": "C:\\PROGRA~2\\MICROS~1\\2019\\COMMUN~1\\VC\\Tools\\MSVC\\1427~1.291\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP  -I..\\..\\..\\sim\\src -I..\\..\\..\\sim\\include -I..\\..\\..\\libkmint\\include  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1   /W3 -std:c++17 /Fosim\\CMakeFiles\\sim.dir\\src\\main.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\Terence\\source\\KMINT\\kmint\\kmintapp\\sim\\src\\main.cpp",
+  "file": "C:/Users/Terence/source/KMINT/kmint/kmintapp/sim/src/main.cpp"
+}
+]
