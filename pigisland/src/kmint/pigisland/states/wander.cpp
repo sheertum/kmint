@@ -9,7 +9,7 @@ namespace pigisland {
   void WanderingState::think()
   {
     if(hasSmelled){
-      context->changeState(std::move(std::make_unique<HuntingState>()));
+      context->changeState(std::make_unique<HuntingState>());
     }
     else {
       move();

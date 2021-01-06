@@ -14,18 +14,16 @@ shark::shark(map::map_graph &g, map::map_node &initial_node) : play::map_bound_a
 
 void shark::act(delta_time dt) {
   t_passed_ += dt;
-  if (to_seconds(t_passed_) >= 1) {
+  if (to_seconds(t_passed_) >= 0.1) {
     state->act();
      t_passed_ = from_seconds(0);
   }
 }
 
 void shark::changeState(std::unique_ptr<State> nextState){
-  nextState->setContext(this);
-  std::cout << "changed state";
-  state.reset();
   state = std::move(nextState);
-   state->act();
+  state->setContext(this);
+  state->act();
 }
 } // namespace pigisland
 } // namespace kmint

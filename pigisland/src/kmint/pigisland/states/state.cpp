@@ -16,7 +16,7 @@ namespace pigisland {
       auto distance = sqrt(a.location().x() * a.location().x() + a.location().y() * a.location().y());
       std::cout << distance << std::endl;
 
-      if (distance > 100) {
+      if (distance > 200) {
         hasSmelled = true;
       }
     }
@@ -31,7 +31,7 @@ namespace pigisland {
   }
 
   void State::setContext(shark* context_){
-    context = std::shared_ptr<shark>(context_);
+      context = context_;
   }
 }
 }

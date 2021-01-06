@@ -17,9 +17,8 @@ namespace pigisland {
       void setContext(shark*);
       void act();
       void checkSleep();
-    //protected:
       bool hasSmelled;
-      std::shared_ptr<shark> context;
+      shark* context;
   };
 } //pigisland
 } //kmint
