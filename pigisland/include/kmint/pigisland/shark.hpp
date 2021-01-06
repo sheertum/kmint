@@ -4,6 +4,7 @@
 #include "kmint/map/map.hpp"
 #include "kmint/play.hpp"
 #include "kmint/primitives.hpp"
+#include "kmint/pigisland/states/state.hpp"
 
 namespace kmint {
 namespace pigisland {
@@ -24,6 +25,12 @@ public:
   // geeft het bereik aan waarbinnen een haai
   // andere actors kan waarnemen.
   scalar perception_range() const override { return 200.f; }
+
+  void changeState(std::unique_ptr<State>);
+  int energy = 100;
+
+protected:
+  std::unique_ptr<State> state;
 
 private:
   // hoeveel tijd is verstreken sinds de laatste beweging

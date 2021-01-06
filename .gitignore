@@ -4,6 +4,7 @@ build/
 .cquery_cached_index/
 \#*
 .vs/*
+.vs/
 .vs/slnx.sqlite
 .vs/VSWorkspaceState.json
 .vs/kmint/v16/*
@@ -18,3 +19,4 @@ build/
 .vs/kmint/v16/Browse.VC.db-shm
 .vs/kmint/v16/Browse.VC.db-wal
 .vs/kmint/v16/Browse.VC.db-shm
+.vscode/settings.json
