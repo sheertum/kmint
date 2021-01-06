@@ -1,7 +1,0 @@
-[submodule "libkmint"]
-	path = libkmint
-	url = git@github.com:Avans/libkmint.git
-[submodule "sim"]
-	path = sim
-	url = git@github.com:avans/kmint-sim.git
-	branch = handout
