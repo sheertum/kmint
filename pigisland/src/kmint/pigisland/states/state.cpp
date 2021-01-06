@@ -3,21 +3,35 @@
 
 namespace kmint {
 namespace pigisland {
-  State::State(std::shared_ptr<shark> actor) : context{ actor } {}
-
   void State::act(){
-    checkSleep();
     sense();
     think();
-    move();
+  }
+
+  void State::sense()
+  {
+    checkSleep();
+    for (auto i = context->begin_perceived(); i != context->end_perceived(); ++i) {
+      auto const& a = *i;
+      auto distance = sqrt(a.location().x() * a.location().x() + a.location().y() * a.location().y());
+      std::cout << distance << std::endl;
+
+      if (distance > 100) {
+        hasSmelled = true;
+      }
+    }
   }
 
   void State::checkSleep(){
     context->energy--;
     if(context->energy <= 0){
       //TODO switch to rest
+        return;
     }
-    std::cout << context->energy << std::endl;
+  }
+
+  void State::setContext(shark* context_){
+    context = std::shared_ptr<shark>(context_);
   }
 }
 }

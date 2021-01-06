@@ -2,14 +2,14 @@
 #include "kmint/pigisland/node_algorithm.hpp"
 #include "kmint/pigisland/resources.hpp"
 #include "kmint/random.hpp"
-#include "kmint/pigisland/states/wanderState.hpp"
+#include "kmint/pigisland/states/wander.hpp"
 
 #include <iostream>
 
 namespace kmint {
 namespace pigisland {
 shark::shark(map::map_graph &g, map::map_node &initial_node) : play::map_bound_actor{initial_node}, drawable_{*this, graphics::image{shark_image()}} {
-  state = std::make_unique<WanderingState>(std::shared_ptr<shark>(this));
+  changeState(std::make_unique<WanderingState>());
 }
 
 void shark::act(delta_time dt) {
@@ -21,7 +21,11 @@ void shark::act(delta_time dt) {
 }
 
 void shark::changeState(std::unique_ptr<State> nextState){
+  nextState->setContext(this);
+  std::cout << "changed state";
+  state.reset();
   state = std::move(nextState);
+   state->act();
 }
 } // namespace pigisland
 } // namespace kmint

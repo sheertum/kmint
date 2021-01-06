@@ -7,17 +7,18 @@ namespace pigisland {
 }
 
 namespace pigisland {
-
   class State {
     public:
-      State(std::shared_ptr<shark>);
+      State() = default;
       virtual ~State() = default;
-      virtual void sense() = 0;
+      virtual void sense();
       virtual void think() = 0;
       virtual void move() = 0;
+      void setContext(shark*);
       void act();
       void checkSleep();
-    protected:
+    //protected:
+      bool hasSmelled;
       std::shared_ptr<shark> context;
   };
 } //pigisland
