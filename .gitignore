@@ -18,3 +18,4 @@ build/
 .vs/kmint/v16/Browse.VC.db-shm
 .vs/kmint/v16/Browse.VC.db-wal
 .vs/kmint/v16/Browse.VC.db-shm
+.vscode/settings.json
