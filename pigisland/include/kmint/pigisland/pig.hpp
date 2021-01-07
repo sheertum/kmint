@@ -12,7 +12,7 @@ class pig : public play::free_roaming_actor {
 public:
   pig(math::vector2d location);
   const ui::drawable &drawable() const override { return drawable_; }
-
+  bool incorporeal() const override { return false; }
 
 private:
   play::image_drawable drawable_;
