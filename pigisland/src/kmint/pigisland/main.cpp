@@ -39,10 +39,15 @@ int main() {
   s.build_actor<pigisland::shark>(graph,
                                   pigisland::find_node_of_kind(graph, 'K'));
 
-  map::map_node& start = pigisland::find_node_of_kind(graph, 'K');
-  map::map_node& end = pigisland::find_node_of_kind(graph, '1');
+  Node& start = pigisland::find_node_of_kind(graph, 'K');
+  Node& end = pigisland::find_node_of_kind(graph, '1');
   bool found;
-  std::list< map::map_node > path = AStar<std::set<map::map_node>, map::map_node, float>::getPath(start, end, found);
+  std::list< map::map_node* > path = AStar::getPath(start, end, found);
+
+  for (auto& node : path) {
+      node->tag(kmint::graph::node_tag::path);
+  }
+
   auto locs = pigisland::random_pig_locations(100);
   for (auto loc : locs) {
     s.build_actor<pigisland::pig>(loc);
