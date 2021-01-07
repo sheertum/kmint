@@ -6,6 +6,7 @@
 #include "kmint/pigisland/pig.hpp"
 #include "kmint/pigisland/resources.hpp"
 #include "kmint/pigisland/shark.hpp"
+#include "kmint/pigisland/AStar.h"
 #include "kmint/play.hpp"
 #include "kmint/ui.hpp"
 #include <algorithm>
@@ -13,8 +14,10 @@
 #include <iostream>
 #include <random>
 #include <vector>
+#include <set>
 
 using namespace kmint;
+
 
 int main() {
   // een app object is nodig om
@@ -35,6 +38,15 @@ int main() {
                                  pigisland::find_node_of_kind(graph, '1'));
   s.build_actor<pigisland::shark>(graph,
                                   pigisland::find_node_of_kind(graph, 'K'));
+
+  Node& start = pigisland::find_node_of_kind(graph, 'K');
+  Node& end = pigisland::find_node_of_kind(graph, '1');
+  bool found;
+  std::list< map::map_node* > path = AStar::getPath(start, pigisland::find_closest_node_to(graph, math::vector2d{16,624}), found);
+
+  //for (auto& node : path) {
+  //    node->tag(kmint::graph::node_tag::path);
+  //}
 
   auto locs = pigisland::random_pig_locations(100);
   for (auto loc : locs) {

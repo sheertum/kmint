@@ -47,7 +47,7 @@ map::map_node const &find_shark_resting_place(map::map_graph const &graph);
 ///
 /// Finds the closest node to a location
 ///
-map::map_node const &find_closest_node_to(map::map_graph const &graph,
+map::map_node &find_closest_node_to(map::map_graph &graph,
                                           math::vector2d location);
 } // namespace pigisland
 } // namespace kmint
