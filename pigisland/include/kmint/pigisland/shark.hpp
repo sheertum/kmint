@@ -27,12 +27,23 @@ public:
   scalar perception_range() const override { return 200.f; }
 
   void changeState(std::unique_ptr<State>);
-  int energy = 100;
 
-protected:
-  std::unique_ptr<State> state;
+  void setHasSmell(bool);
+  bool hasSmell();
+
+  void setIsScared(bool);
+  bool isScared();
+
+  void decreaseEnergy();
+  int getEnergy();
+  void resetEnergy();
 
 private:
+  std::unique_ptr<State> _state;
+  bool _hasSmell;
+  bool _isScared;
+  int _energy;
+  
   // hoeveel tijd is verstreken sinds de laatste beweging
   delta_time t_passed_{};
   // weet hoe de koe getekend moet worden

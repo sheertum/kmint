@@ -21,6 +21,9 @@ add_executable(pigisland
   src/kmint/pigisland/states/state.cpp
   src/kmint/pigisland/states/wander.cpp
   src/kmint/pigisland/states/hunting.cpp
+  src/kmint/pigisland/states/rest.cpp
+  src/kmint/pigisland/states/flee.cpp
+  src/kmint/pigisland/states/state_machine.cpp
   )
 
 target_compile_features(pigisland PUBLIC cxx_std_17)

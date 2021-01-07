@@ -3,10 +3,8 @@
     
 namespace kmint {
 namespace pigisland {
-    class shark;
-}
+  class shark;
 
-namespace pigisland {
   class State {
     public:
       State() = default;
@@ -19,6 +17,8 @@ namespace pigisland {
       void checkSleep();
       bool hasSmelled;
       shark* context;
+    protected:
+      void wander();
   };
 } //pigisland
 } //kmint
