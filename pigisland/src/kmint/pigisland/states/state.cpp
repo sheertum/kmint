@@ -49,11 +49,13 @@ namespace pigisland {
 
   void State::moveToTarget(){
     auto node = *_nextStep;
+    node->tagged(false);
     context->node(*node);
     if (_nextStep != _path.begin()) {
       _nextStep--;
     }
     else {
+      //TODO: reset visited nodes that weren't part of the path
       context->updateState();
     }
   }
