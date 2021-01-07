@@ -6,7 +6,9 @@ namespace pigisland {
   FleeState::FleeState() : State(), _wanderingTick{10}{}
   void FleeState::think()
   {
-    //TODO: if node is rest switch naar Wandering 
+    if(_wanderingTick <=0 || context->getEnergy() <= 0){
+      context->updateState();
+    }
   }
   
   void FleeState::move()

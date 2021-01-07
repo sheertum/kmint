@@ -8,7 +8,6 @@ namespace pigisland {
   public:
     HuntingState() = default;
     virtual ~HuntingState() = default;
-    void think() override;
     void move() override;
   };
 }

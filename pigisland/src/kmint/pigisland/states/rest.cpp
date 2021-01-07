@@ -3,12 +3,20 @@
 
 namespace kmint {
 namespace pigisland {
-  void RestingState::think()
-  {
-    context->resetEnergy();
-    //TODO: if node is rest switch naar Wandering 
-  }
   
+  void RestingState::sense()
+  {
+    State::sense();
+    //TODO: check of je op de rest zit
+    context->resetEnergy();
+  }
+
+  void RestingState::think(){
+    if(context->getEnergy() == 100){
+      context->updateState();
+    }
+  }
+
   void RestingState::move()
   {
     //TODO: implement A*

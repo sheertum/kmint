@@ -8,27 +8,27 @@ namespace pigisland {
     _context = std::shared_ptr<shark>(context);
   }
 
-  void StateMachine::transitionState()
+  std::unique_ptr<State> StateMachine::updateTransitionState()
   {
     if(_context->getEnergy() <= 0)
     {
-      _context->changeState(std::make_unique<RestingState>());
-      return;
+      std::cout << "resting" << std::endl;
+      return std::make_unique<RestingState>();
     }
 
     if(_context->isScared())
     {
-      _context->changeState(std::make_unique<FleeState>());
-      return;
+      std::cout << "fleeing" << std::endl;
+      return std::make_unique<FleeState>();
     }
-
+    
     if(_context->hasSmell())
     {
-      _context->changeState(std::make_unique<HuntingState>());
-      return;
+      std::cout << "hunting" << std::endl;
+      return std::make_unique<HuntingState>();
     }
-
-    _context->changeState(std::make_unique<WanderingState>());
+    std::cout << "wandering" << std::endl;
+    return std::make_unique<WanderingState>();
   }
 }
 }

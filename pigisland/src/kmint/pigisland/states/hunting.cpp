@@ -3,16 +3,6 @@
 
 namespace kmint {
 namespace pigisland {
-  void HuntingState::think()
-  {
-    if(!hasSmelled){
-      // context->changeState(std::make_unique<WanderingState>());
-    }
-    else {
-        move();
-    }
-    //TODO: calculate closest target and save
-  }
 
   void HuntingState::move()
   {

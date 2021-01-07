@@ -13,7 +13,7 @@ namespace pigisland {
   class StateMachine{
   public:
     StateMachine(shark*);
-    void transitionState();
+    std::unique_ptr<State> updateTransitionState();
   private:
     std::shared_ptr<shark> _context;
   };

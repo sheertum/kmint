@@ -8,6 +8,7 @@ namespace pigisland {
   public:
     RestingState() = default;
     ~RestingState() = default;
+    void sense() override;
     void think() override;
     void move() override;
   };

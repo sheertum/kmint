@@ -1,15 +1,15 @@
+#include "kmint/random.hpp"
 #include "kmint/pigisland/shark.hpp"
 #include "kmint/pigisland/node_algorithm.hpp"
 #include "kmint/pigisland/resources.hpp"
-#include "kmint/random.hpp"
-#include "kmint/pigisland/states/wander.hpp"
+#include "kmint/pigisland/states/state_machine.hpp"
 
 #include <iostream>
 
 namespace kmint {
 namespace pigisland {
-shark::shark(map::map_graph &g, map::map_node &initial_node) : play::map_bound_actor{initial_node}, drawable_{*this, graphics::image{shark_image()}}, _energy{100}, _hasSmell{false} {
-  changeState(std::make_unique<WanderingState>());
+shark::shark(map::map_graph& g, map::map_node& initial_node) : play::map_bound_actor{ initial_node }, drawable_{ *this, graphics::image{shark_image()} }, _stateMachine{ std::make_unique<StateMachine>(this) }, _energy{ 100 }, _hasSmell{ false }, _isScared{ false } {
+  updateState();
 }
 
 void shark::act(delta_time dt) {
@@ -20,8 +20,18 @@ void shark::act(delta_time dt) {
   }
 }
 
-void shark::changeState(std::unique_ptr<State> nextState){
-  _state = std::move(nextState);
+bool shark::needsStateUpdate()
+{
+    auto newstate = _stateMachine->updateTransitionState();
+  if(typeid(newstate) == typeid(_state)){
+    return false;
+  } else {
+    return true;
+  }
+}
+
+void shark::updateState(){
+  _state = std::move(_stateMachine->updateTransitionState());
   _state->setContext(this);
 }
 
@@ -42,7 +52,7 @@ void shark::setIsScared(bool isScared)
 
 bool shark::isScared()
 {
-  return isScared;
+  return _isScared;
 }
 
 void shark::decreaseEnergy()
@@ -60,6 +70,11 @@ int shark::getEnergy()
 void shark::resetEnergy()
 {
   _energy=100; 
+}
+
+std::unique_ptr<State>& shark::gestState()
+{
+  return _state;
 }
 
 } // namespace pigisland
