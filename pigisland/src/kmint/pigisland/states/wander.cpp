@@ -7,5 +7,10 @@ namespace pigisland {
   {
     wander();
   }
+
+  void WanderingState::collide() 
+  {
+    eat();
+  }
 }
 }

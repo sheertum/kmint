@@ -13,5 +13,10 @@ namespace pigisland {
   {
     moveToTarget();
   }
+
+  void HuntingState::collide() 
+  {
+    eat();
+  }
 }
 }

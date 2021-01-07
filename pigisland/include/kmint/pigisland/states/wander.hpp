@@ -9,6 +9,7 @@ namespace pigisland {
     WanderingState() = default;
     virtual ~WanderingState() = default;
     void move() override;
+    void collide() override;
   };
 }
 }

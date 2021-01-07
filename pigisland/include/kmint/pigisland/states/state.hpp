@@ -14,8 +14,10 @@ namespace pigisland {
       virtual void think();
       virtual void move() = 0;
       virtual void setContext(shark*);
+      virtual void collide();
       void moveToTarget();
       void setPath(Node*);
+      void eat();
       shark* context;
     protected:
       std::list<Node*> _path;
