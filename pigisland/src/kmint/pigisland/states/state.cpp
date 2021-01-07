@@ -10,7 +10,7 @@ namespace kmint {
 namespace pigisland {
   void State::sense()
   {
-    float smallestDistance = 700;
+    float smallestDistance = 100;
     map::map_node* newSmellTarget = nullptr;
 
     for (auto i = context->begin_perceived(); i != context->end_perceived(); ++i) {
@@ -69,10 +69,6 @@ namespace pigisland {
   void State::eat()
   {
     for (auto i = context->begin_collision(); i != context->end_collision(); ++i) {
-      auto const& a = *i;
-      auto xDistance = abs(a.location().x() - context->location().x());
-      auto yDistance = abs(a.location().y() - context->location().y());
-      auto distance = sqrt(xDistance * xDistance + yDistance * yDistance);
       i->remove();
     }
   }
