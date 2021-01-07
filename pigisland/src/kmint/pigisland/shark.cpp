@@ -8,22 +8,27 @@
 
 namespace kmint {
 namespace pigisland {
-shark::shark(map::map_graph& g, map::map_node& initial_node) : play::map_bound_actor{ initial_node }, drawable_{ *this, graphics::image{shark_image()} }, _stateMachine{ std::make_unique<StateMachine>(this) }, _energy{ 100 }, _isScared{ false }, _graph{g} {
+    shark::shark(map::map_graph& g, map::map_node& initial_node) : play::map_bound_actor{ initial_node }, drawable_{ *this, graphics::image{shark_image()} }, _stateMachine{ std::make_unique<StateMachine>(this) }, _energy{ 100 }, _isScared{ false }, _graph{ g }, _smellTarget{ nullptr }{
   updateState();
+  _restTarget = &find_node_of_kind(g, 'K');
 }
 
 void shark::act(delta_time dt) {
   t_passed_ += dt;
   if (to_seconds(t_passed_) >= 0.1) {
-    _state->act();
+    _state->sense();
+    _state->think();
+    _state->move();
+    decreaseEnergy();
+    std::cout << _energy << std::endl;
      t_passed_ = from_seconds(0);
   }
 }
 
 bool shark::needsStateUpdate()
 {
-    auto newstate = _stateMachine->updateTransitionState();
-  if(typeid(newstate) == typeid(_state)){
+  auto newstate = _stateMachine->updateTransitionState();
+  if(typeid(*newstate) == typeid(*_state)){
     return false;
   } else {
     return true;

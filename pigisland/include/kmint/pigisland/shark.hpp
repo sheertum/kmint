@@ -39,19 +39,20 @@ public:
   void setIsScared(bool isScared);
   bool isScared();
 
+  map::map_node* getRestTarget() { return _restTarget; }
+
   void decreaseEnergy();
   int getEnergy();
   void resetEnergy();
 
   map::map_graph& getGraph();
 
-  const map::map_node* restTarget;
-
 private:
   std::unique_ptr<State> _state;
   std::unique_ptr<StateMachine> _stateMachine;
   map::map_graph& _graph;
   map::map_node* _smellTarget;
+  map::map_node* _restTarget;
 
   bool _isScared;
   int _energy;

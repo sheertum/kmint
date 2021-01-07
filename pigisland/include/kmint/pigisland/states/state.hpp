@@ -14,7 +14,6 @@ namespace pigisland {
       virtual void think();
       virtual void move() = 0;
       virtual void setContext(shark*);
-      void act();
       void moveToTarget();
       void setPath(Node*);
       shark* context;

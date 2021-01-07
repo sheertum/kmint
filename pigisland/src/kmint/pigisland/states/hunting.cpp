@@ -11,7 +11,6 @@ namespace pigisland {
 
   void HuntingState::move()
   {
-    std::cout << "hunting move" << std::endl;
     moveToTarget();
   }
 }

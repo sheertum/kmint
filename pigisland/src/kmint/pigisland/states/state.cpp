@@ -8,13 +8,6 @@
 
 namespace kmint {
 namespace pigisland {
-  void State::act(){
-    sense();
-    think();
-    move();
-    context->decreaseEnergy();
-  }
-
   void State::sense()
   {
     float smallestDistance = 100;
@@ -61,7 +54,12 @@ namespace pigisland {
   void State::moveToTarget(){
     auto node = *_nextStep;
     context->node(*node);
-    _nextStep--;
+    if (_nextStep != _path.begin()) {
+      _nextStep--;
+    }
+    else {
+      context->updateState();
+    }
   }
 
   void State::setPath(Node* target){

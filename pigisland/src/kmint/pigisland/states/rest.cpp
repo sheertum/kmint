@@ -6,14 +6,17 @@ namespace pigisland {
   void RestingState::setContext(shark* context_)
   {
     State::setContext(context_);
-    // setPath(context->());
+    setPath(context->getRestTarget());
   }
+
 
   void RestingState::sense()
   {
     State::sense();
-    //TODO: check of je op de rest zit
-    context->resetEnergy();
+    if(context->location() == context->getRestTarget()->location()){
+      context->resetEnergy();
+      context->updateState();
+    }
   }
 
   void RestingState::think(){
@@ -24,7 +27,7 @@ namespace pigisland {
 
   void RestingState::move()
   {
-    //TODO: implement A*
+    moveToTarget();
   }
 }
 }
