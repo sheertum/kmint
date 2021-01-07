@@ -4,6 +4,12 @@
 namespace kmint {
 namespace pigisland {
   FleeState::FleeState() : State(), _wanderingTick{10}{}
+
+  void FleeState::setContext(shark* context_)
+  {
+    State::setContext(context_);
+    setPath(context->getRestTarget());
+  }
   void FleeState::think()
   {
     if(_wanderingTick <=0 || context->getEnergy() <= 0){
