@@ -1,4 +1,5 @@
 #pragma once
+#include "kmint/pigisland/AStar.h"
 #include <memory>
     
 namespace kmint {
@@ -12,10 +13,14 @@ namespace pigisland {
       virtual void sense();
       virtual void think();
       virtual void move() = 0;
-      void setContext(shark*);
+      virtual void setContext(shark*);
       void act();
+      void moveToTarget();
+      void setPath(Node*);
       shark* context;
     protected:
+      std::list<Node*> _path;
+      std::list<kmint::map::map_node *>::iterator _nextStep;
       void wander();
   };
 } //pigisland

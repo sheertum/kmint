@@ -32,20 +32,27 @@ public:
   void updateState();
   std::unique_ptr<State>& gestState();
 
-  void setHasSmell(bool);
+  void setSmellTarget(map::map_node*);
   bool hasSmell();
+  map::map_node* getSmellTarget();
 
-  void setIsScared(bool);
+  void setIsScared(bool isScared);
   bool isScared();
 
   void decreaseEnergy();
   int getEnergy();
   void resetEnergy();
 
+  map::map_graph& getGraph();
+
+  const map::map_node* restTarget;
+
 private:
   std::unique_ptr<State> _state;
   std::unique_ptr<StateMachine> _stateMachine;
-  bool _hasSmell;
+  map::map_graph& _graph;
+  map::map_node* _smellTarget;
+
   bool _isScared;
   int _energy;
   

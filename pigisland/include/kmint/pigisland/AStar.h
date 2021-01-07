@@ -12,7 +12,7 @@ class AStar {
 	//typedef kmint::graph::basic_node<map_node_info> Node;
 public:
 	static Cost h(const Node& node, const Node& end);
-	static std::list<Node*> getPath(Node& start, Node& end, bool& found);
+	static std::list<Node*> getPath(Node& start, Node& end, bool& found) const;
 
 private:
 	static std::list<Node*> constructPath(std::map<Node*, Node*>& from, Node& current);

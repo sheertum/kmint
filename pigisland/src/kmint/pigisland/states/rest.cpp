@@ -3,7 +3,12 @@
 
 namespace kmint {
 namespace pigisland {
-  
+  void RestingState::setContext(shark* context_)
+  {
+    State::setContext(context_);
+    // setPath(context->());
+  }
+
   void RestingState::sense()
   {
     State::sense();

@@ -11,6 +11,7 @@ namespace pigisland {
     void sense() override;
     void think() override;
     void move() override;
+    virtual void setContext(shark*);
   };
 }
 }

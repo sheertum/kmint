@@ -3,11 +3,16 @@
 
 namespace kmint {
 namespace pigisland {
+  void HuntingState::setContext(shark* context_)
+  {
+    State::setContext(context_);
+    setPath(context->getSmellTarget());
+  }
 
   void HuntingState::move()
   {
     std::cout << "hunting move" << std::endl;
-    //TODO: gebruik A* om naar een biggeetje te gaan
+    moveToTarget();
   }
 }
 }

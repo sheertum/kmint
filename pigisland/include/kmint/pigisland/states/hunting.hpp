@@ -9,6 +9,7 @@ namespace pigisland {
     HuntingState() = default;
     virtual ~HuntingState() = default;
     void move() override;
+    void setContext(shark*) override;
   };
 }
 }

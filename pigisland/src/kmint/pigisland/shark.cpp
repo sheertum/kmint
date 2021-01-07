@@ -8,7 +8,7 @@
 
 namespace kmint {
 namespace pigisland {
-shark::shark(map::map_graph& g, map::map_node& initial_node) : play::map_bound_actor{ initial_node }, drawable_{ *this, graphics::image{shark_image()} }, _stateMachine{ std::make_unique<StateMachine>(this) }, _energy{ 100 }, _hasSmell{ false }, _isScared{ false } {
+shark::shark(map::map_graph& g, map::map_node& initial_node) : play::map_bound_actor{ initial_node }, drawable_{ *this, graphics::image{shark_image()} }, _stateMachine{ std::make_unique<StateMachine>(this) }, _energy{ 100 }, _isScared{ false }, _graph{g} {
   updateState();
 }
 
@@ -35,14 +35,19 @@ void shark::updateState(){
   _state->setContext(this);
 }
 
-void shark::setHasSmell(bool hasSmell_)
+void shark::setSmellTarget(map::map_node* smellTarget)
 {
-  _hasSmell = hasSmell_;
+  _smellTarget = smellTarget;
 }
 
 bool shark::hasSmell()
 {
-  return _hasSmell;
+  return _smellTarget != nullptr;
+}
+
+map::map_node* shark::getSmellTarget()
+{
+  return _smellTarget;
 }
 
 void shark::setIsScared(bool isScared)
@@ -75,6 +80,11 @@ void shark::resetEnergy()
 std::unique_ptr<State>& shark::gestState()
 {
   return _state;
+}
+
+map::map_graph& shark::getGraph()
+{
+  return _graph;
 }
 
 } // namespace pigisland
