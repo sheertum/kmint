@@ -28,12 +28,8 @@ namespace pigisland {
         smallestDistance = distance;
         newSmellTarget = &find_closest_node_to(context->getGraph(), a.location());
       }
-
     }
-
-    if(newSmellTarget != nullptr){
-      context->setSmellTarget(newSmellTarget);
-    } 
+    context->setSmellTarget(newSmellTarget);
   }
 
   void State::think(){
