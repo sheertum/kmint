@@ -32,10 +32,10 @@ map::map_node const &find_shark_resting_place(map::map_graph const &graph) {
   return find_node_of_kind(graph, 'K');
 }
 
-map::map_node const &find_closest_node_to(map::map_graph const &graph,
+map::map_node &find_closest_node_to(map::map_graph &graph,
                                           math::vector2d location) {
   auto i = std::min_element(graph.begin(), graph.end(),
-                            [location](auto const &l, auto const &r) {
+                            [location](auto &l, auto &r) {
                               return distance2(l.location(), location) <
                                      distance2(r.location(), location);
                             });

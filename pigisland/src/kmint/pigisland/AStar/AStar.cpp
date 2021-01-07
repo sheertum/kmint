@@ -34,7 +34,7 @@ std::list<Node*> AStar::getPath(Node& start, Node& end, bool& found)
 
 	while (!open.empty()) {
 		Node& current = *open.top().key;
-		current.tag(kmint::graph::node_tag::visited);
+		current.tag(kmint::graph::node_tag::path);
 		if (&current == &end) {
 			found = true;
 			return constructPath(from, current);
