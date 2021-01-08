@@ -23,7 +23,7 @@ add_executable(pigisland
   src/kmint/pigisland/states/hunting.cpp
   src/kmint/pigisland/states/rest.cpp
   src/kmint/pigisland/states/flee.cpp
-  src/kmint/pigisland/states/state_machine.cpp
+  
   src/kmint/pigisland/AStar/AStar.cpp
   include/kmint/pigisland/PriorityMap.hpp
 )

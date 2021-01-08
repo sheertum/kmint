@@ -5,11 +5,9 @@
 #include "kmint/play.hpp"
 #include "kmint/primitives.hpp"
 #include "kmint/pigisland/states/state.hpp"
-//#include "kmint/pigisland/states/state_machine.hpp"
 
 namespace kmint {
 namespace pigisland {
-	class StateMachine;
 
 class shark : public play::map_bound_actor {
 public:
@@ -28,34 +26,10 @@ public:
   // andere actors kan waarnemen.
   scalar perception_range() const override { return 200.f; }
 
-  bool needsStateUpdate();
-  void updateState();
-  std::unique_ptr<State>& gestState();
-
-  void setSmellTarget(map::map_node*);
-  bool hasSmell();
-  map::map_node* getSmellTarget();
-
-  void setIsScared(bool isScared);
-  bool isScared();
-
-  map::map_node* getRestTarget() { return _restTarget; }
-
-  void decreaseEnergy();
-  int getEnergy();
-  void resetEnergy();
-
-  map::map_graph& getGraph();
+  void updateState(std::unique_ptr<State> newState);
 
 private:
   std::unique_ptr<State> _state;
-  std::unique_ptr<StateMachine> _stateMachine;
-  map::map_graph& _graph;
-  map::map_node* _smellTarget;
-  map::map_node* _restTarget;
-
-  bool _isScared;
-  int _energy;
   
   // hoeveel tijd is verstreken sinds de laatste beweging
   delta_time t_passed_{};
