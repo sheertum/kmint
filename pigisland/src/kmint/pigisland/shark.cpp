@@ -35,7 +35,8 @@ bool shark::needsStateUpdate()
   }
 }
 
-void shark::updateState(){
+void shark::updateState()
+{
   _state = std::move(_stateMachine->updateTransitionState());
   _state->setContext(this);
 }

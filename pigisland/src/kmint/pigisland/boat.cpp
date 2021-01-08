@@ -2,21 +2,31 @@
 #include "kmint/pigisland/node_algorithm.hpp"
 #include "kmint/pigisland/resources.hpp"
 #include "kmint/random.hpp"
+#include "kmint/pigisland/probabilistic/boat_wander.hpp"
+#include <memory>
 namespace kmint {
 namespace pigisland {
   boat::boat(map::map_graph& g, map::map_node& initial_node)
     : play::map_bound_actor{ initial_node },
-      drawable_{ *this, graphics::image{boat_image()} } {}
+      drawable_{ *this, graphics::image{boat_image()} } {
+      changeState(std::make_unique<BoatWanderState>());
+      _state->setdocks(g);
+      }
 
 
   void boat::act(delta_time dt) {
     t_passed_ += dt;
-    if (to_seconds(t_passed_) >= 1) {
-      // pick random edge
-      int next_index = random_int(0, node().num_edges());
-      this->node(node()[next_index].to());
+    if (to_seconds(t_passed_) >= 0.1) {
+      _state->sense();
+      _state->move();
       t_passed_ = from_seconds(0);
     }
+  }
+
+  void boat::changeState(std::unique_ptr<BaseState> newState){
+    _state.reset();
+    _state = std::move(newState);
+    _state->setContext(this);
   }
 
 } // namespace pigisland
