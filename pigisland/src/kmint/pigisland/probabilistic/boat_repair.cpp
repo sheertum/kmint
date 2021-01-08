@@ -41,10 +41,6 @@ namespace pigisland {
 
 		for(auto& dock : _chances){
 			if(chance <= dock.second+limit && chance > limit){
-				std::cout << "picked: " << std::endl;
-				std::cout << "dock-x: " << dock.first->location().x() << std::endl;
-				std::cout << "dock-y: " << dock.first->location().y() << std::endl;
-
 				return dock.first;
 			} 
 			else {
@@ -71,7 +67,6 @@ namespace pigisland {
 			repairAmount = random_int(std::get<0>(range), std::get<1>(range));
 		}
 		_paintDamage -= repairAmount;
-		std::cout << "repairamount: " << repairAmount << std::endl;
 		updateDock(repairAmount);
 	}
 
@@ -109,10 +104,6 @@ namespace pigisland {
 				}
 				doc.second += chanceDecrease;
 			}
-
-			std::cout << "dock-x: " << doc.first->location().x() << std::endl;
-			std::cout << "dock-y: " << doc.first->location().y() << std::endl;
-			std::cout << "chance changed to: " << doc.second << std::endl;
 		}
 	}
 }

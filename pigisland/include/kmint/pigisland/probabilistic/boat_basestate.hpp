@@ -1,5 +1,6 @@
 #pragma once
 #include "kmint/pigisland/AStar.h"
+#include "kmint/pigisland/pig.hpp"
 #include <map>
 namespace kmint {
 namespace pigisland {
@@ -17,6 +18,7 @@ namespace pigisland {
     void boardPig();
     void setdocks(map::map_graph& g);
   protected:
+    std::vector<pig> _collectedPigs;
     boat* _context;
     int _paintDamage;
     const int _paintDamageThreshold = 2;

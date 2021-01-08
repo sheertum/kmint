@@ -1,6 +1,7 @@
 #include "kmint/pigisland/probabilistic/boat_basestate.hpp"
 #include "kmint/pigisland/node_algorithm.hpp"
 #include "kmint/pigisland/boat.hpp"
+#include "kmint/pigisland/pig.hpp"
 
 namespace kmint {
 namespace pigisland {
@@ -26,10 +27,6 @@ namespace pigisland {
     _context = context;
   }
 
-  void BaseState::boardPig(){
-
-  }
-
   void BaseState::increasePaintDamage(){
     if(_paintDamage < _paintDamageThreshold){
       _paintDamage++;
@@ -41,6 +38,18 @@ namespace pigisland {
     _paintDamage -= amount;
     if(_paintDamage < 0){
       _paintDamage = 0;
+    }
+  }
+
+  void BaseState::boardPig(){
+    for (auto i = _context->begin_collision(); i != _context->end_collision(); ++i) {
+      if(typeid(*i) == typeid(pig)){
+          //TODO: Hoe kan ik het beste een pig opslaan?
+        //_collectedPigs.push_back(*i);
+        //std::cout << "verzamelde varkens" << _collectedPigs.size() << std::endl;
+        std::cout << "piggy entered the boat" << std::endl;
+        i->remove();
+      }
     }
   }
 }
