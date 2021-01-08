@@ -19,6 +19,8 @@ add_executable(pigisland
   src/kmint/pigisland/boat.cpp
   src/kmint/pigisland/pig.cpp 
   src/kmint/pigisland/AStar/AStar.cpp
+  src/kmint/pigisland/forcedriven/Wheel.cpp
+  src/kmint/pigisland/forcedriven/Vehicle.cpp
   include/kmint/pigisland/PriorityMap.hpp)
 
 target_compile_features(pigisland PUBLIC cxx_std_17)

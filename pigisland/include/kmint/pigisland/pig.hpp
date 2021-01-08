@@ -2,6 +2,8 @@
 #define KMINT_PIGISLAND_PIG_HPP
 
 #include "kmint/play.hpp"
+#include "forcedriven/Vehicle.h"
+
 #include <tuple>
 #include <vector>
 
@@ -13,9 +15,14 @@ public:
   pig(math::vector2d location);
   const ui::drawable &drawable() const override { return drawable_; }
 
+  void act(delta_time dt) override;
+
+  bool perceptive() const override { return true; }
+  scalar perception_range() const override { return 1000.f; }
 
 private:
   play::image_drawable drawable_;
+  Vehicle _dikkeBMW;
 };
 
 } // namespace pigisland

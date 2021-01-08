@@ -1,0 +1,54 @@
+#include "kmint/pigisland/forcedriven/Vehicle.h"
+#include "kmint/pigisland/forcedriven/Wheel.h"
+
+using namespace kmint::math;
+
+Vehicle::Vehicle(double mass, double maxSpeed, const kmint::math::vector2d& startingVelocity) :
+_mass{mass},
+_maxSpeed{maxSpeed},
+_velocity{startingVelocity}
+{
+	updateHeading();
+}
+
+vector2d Vehicle::updatePosition(double dt, const kmint::math::vector2d& currentPosition)
+{
+	vector2d steeringForce = _wheel.forceSum();
+	vector2d acceleration = steeringForce / _mass;
+	
+	_velocity += acceleration * dt;
+	truncateVelocity(_maxSpeed);
+
+	return currentPosition + (_velocity*dt);
+}
+
+void Vehicle::truncateVelocity(double max) {
+	if (_velocity.length() > max)
+	{
+		_velocity = normalize(_velocity) * max;
+	}
+}
+
+void Vehicle::updateHeading() {
+	if (_velocity.length() > 0.00001)
+	{
+		_heading = normalize(_velocity);
+		_right = rotate(_heading, angle{ pi / 2 });
+	}
+}
+
+const Wheel& Vehicle::takeTheWheel() const {
+	return _wheel;
+}
+
+Wheel& Vehicle::takeTheWheel() {
+	return _wheel;
+}
+
+double Vehicle::maxSpeed() const {
+	return _maxSpeed;
+}
+
+const vector2d& Vehicle::velocity() const {
+	return _velocity;
+}

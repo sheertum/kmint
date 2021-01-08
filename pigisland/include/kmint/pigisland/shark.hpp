@@ -23,7 +23,7 @@ public:
   bool perceptive() const override { return true; }
   // geeft het bereik aan waarbinnen een haai
   // andere actors kan waarnemen.
-  scalar perception_range() const override { return 200.f; }
+  scalar perception_range() const override { return 1000.f; }
 
 private:
   // hoeveel tijd is verstreken sinds de laatste beweging
