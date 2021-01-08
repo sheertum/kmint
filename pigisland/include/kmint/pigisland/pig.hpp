@@ -19,6 +19,7 @@ public:
 
   bool perceptive() const override { return true; }
   scalar perception_range() const override { return 1000.f; }
+  bool incorporeal() const override { return false; }
 
 private:
   play::image_drawable drawable_;

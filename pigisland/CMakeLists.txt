@@ -18,6 +18,12 @@ add_executable(pigisland
   src/kmint/pigisland/shark.cpp
   src/kmint/pigisland/boat.cpp
   src/kmint/pigisland/pig.cpp 
+  src/kmint/pigisland/states/state.cpp
+  src/kmint/pigisland/states/wander.cpp
+  src/kmint/pigisland/states/hunting.cpp
+  src/kmint/pigisland/states/rest.cpp
+  src/kmint/pigisland/states/flee.cpp
+  src/kmint/pigisland/states/state_machine.cpp
   src/kmint/pigisland/AStar/AStar.cpp
   src/kmint/pigisland/forcedriven/Wheel.cpp
   src/kmint/pigisland/forcedriven/Vehicle.cpp

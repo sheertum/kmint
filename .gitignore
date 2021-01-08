@@ -4,6 +4,7 @@ build/
 .cquery_cached_index/
 \#*
 .vs/*
+.vs/
 .vs/slnx.sqlite
 .vs/VSWorkspaceState.json
 .vs/kmint/v16/*

@@ -39,11 +39,6 @@ int main() {
   s.build_actor<pigisland::shark>(graph,
                                   pigisland::find_node_of_kind(graph, 'K'));
 
-  Node& start = pigisland::find_node_of_kind(graph, 'K');
-  Node& end = pigisland::find_node_of_kind(graph, '1');
-  bool found;
-  std::list< map::map_node* > path = AStar::getPath(start, pigisland::find_closest_node_to(graph, math::vector2d{16,624}), found);
-
   //for (auto& node : path) {
   //    node->tag(kmint::graph::node_tag::path);
   //}
