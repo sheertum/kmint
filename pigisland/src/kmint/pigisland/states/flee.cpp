@@ -4,7 +4,10 @@
 
 namespace kmint {
 namespace pigisland {
-  FleeState::FleeState(map::map_graph& graph, map::map_node* restTarget, int energy,  shark* context) : State(graph, restTarget, energy, context), _wanderingTick{10}{}
+  FleeState::FleeState(map::map_graph& graph, map::map_node* restTarget, int energy,  shark* context,  bool isScared) : State(graph, restTarget, energy, context, isScared), _wanderingTick{10}{
+    calculateNextStep();
+    calculateStepCost();
+  }
 
   void FleeState::think()
   {
@@ -15,10 +18,16 @@ namespace pigisland {
   
   void FleeState::move()
   {
-    int next_index = random_int(0, context->node().num_edges());
-    context->node(context->node()[next_index].to());
+    context->node(*_nextStep);
     _wanderingTick--;
     _energy--;
   }
+
+  void FleeState::calculateNextStep() 
+  {
+    int next_index = random_int(0, context->node().num_edges());
+    _nextStep = &context->node()[next_index].to();
+  }
+
 }
 }

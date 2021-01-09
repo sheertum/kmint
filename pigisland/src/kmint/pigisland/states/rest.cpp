@@ -3,8 +3,10 @@
 
 namespace kmint {
 namespace pigisland {
-  RestingState::RestingState(map::map_graph& graph, map::map_node* restTarget, int energy,  shark* context) : State(graph, restTarget, energy, context){
+  RestingState::RestingState(map::map_graph& graph, map::map_node* restTarget, int energy,  shark* context, bool isScared) : State(graph, restTarget, energy, context, isScared){
     createPath(_restTarget);
+    calculateNextStep();
+    calculateStepCost();
   }
 
   void RestingState::sense()
@@ -21,9 +23,13 @@ namespace pigisland {
     }
   }
 
-  void RestingState::move()
+  void RestingState::calculateNextStep() 
   {
-    setNextStepOnPath();
+    _nextStep = *_nextPathStep;
+    _nextStep->tagged(false);
+    if (_nextPathStep != _path.begin()) {
+      _nextPathStep--;
+    }
   }
 }
 }

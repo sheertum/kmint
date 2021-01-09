@@ -12,11 +12,11 @@
 
 namespace kmint {
 namespace pigisland {
-    State::State(map::map_graph& graph) : _graph{ graph }, _energy{ 100 }, _smellTarget{ nullptr }, context{ nullptr }, _restTarget{ nullptr }{
+    State::State(map::map_graph& graph) : _graph{ graph }, _energy{ 100 }, _smellTarget{ nullptr }, context{ nullptr }, _restTarget{ nullptr }, _isScared{false}{
     _restTarget = &find_node_of_kind(graph, 'K');
   }
 
-  State::State(map::map_graph& graph, map::map_node* restTarget, int energy, shark* context_) : _graph{ graph }, _energy{ energy }, _restTarget{ restTarget }, context{ context_ }, _smellTarget{nullptr} {}
+  State::State(map::map_graph& graph, map::map_node* restTarget, int energy, shark* context_, bool isScared) : _graph{ graph }, _energy{ energy }, _restTarget{ restTarget }, context{ context_ }, _isScared{isScared}, _smellTarget{nullptr} {}
 
   void State::setContext(shark* context_){
       context = context_;
@@ -24,7 +24,7 @@ namespace pigisland {
 
   void State::sense()
   {
-    float smallestDistance = 100;
+    float smallestDistance = 300;
     _isScared = false;
     map::map_node* newSmellTarget = nullptr;
 
@@ -44,34 +44,40 @@ namespace pigisland {
         _smellTarget = &find_closest_node_to(_graph, a.location());
       }
     }
+    calculateNextStep();
+    calculateStepCost();
   }
 
-  void State::think(){
+  void State::think(){    
     auto newState = getNewState();
     if(newState != nullptr ){
       context->updateState(std::move(newState));
     }
   }
 
-  void State::setNextStepOnPath(){
-    auto node = *_nextStep;
-    node->tagged(false);
-    context->node(*node);
-    if (_nextStep != _path.begin()) {
-      _nextStep--;
-    }
-    else {
-      //TODO: reset visited nodes that weren't part of the path
-      context->updateState(updateTransitionState(this));
-    }
+  void State::move()
+  {
+    context->node(*_nextStep);
+    _energy--;
   }
 
   void State::createPath(Node* target){
     auto& start = find_closest_node_to(_graph, context->location()) ;
     bool found;
     _path = AStar::getPath(start, *target, found);
-    _nextStep = _path.end();
-    _nextStep--;
+    _nextPathStep = _path.end();
+    _nextPathStep--;
+  }
+
+  void State::calculateStepCost()
+  {
+    for(int i = 0; i < context->node().num_edges(); i++)
+    {
+      if(_nextStep == &context->node()[i].to())
+      {
+        _nextStepWeight = context->node()[i].weight();
+      }
+    }
   }
 
   void State::eat()
@@ -97,24 +103,29 @@ namespace pigisland {
     }
   }
 
+  int State::getStepWeight()
+  {
+    return _nextStepWeight;
+  }
+
   std::unique_ptr<State> State::updateTransitionState(State* state)
   {
     if(_energy <= 0)
     {
-      return std::make_unique<RestingState>(_graph, _restTarget, _energy, context);
+      return std::make_unique<RestingState>(_graph, _restTarget, _energy, context, _isScared);
     }
 
     if(_isScared)
     {
-      return std::make_unique<FleeState>(_graph, _restTarget, _energy, context);
+      return std::make_unique<FleeState>(_graph, _restTarget, _energy, context, _isScared);
     }
     
     if(_smellTarget)
     {
-      return std::make_unique<HuntingState>(_graph, _restTarget, _energy, context, _smellTarget);
+      return std::make_unique<HuntingState>(_graph, _restTarget, _energy, context, _smellTarget, _isScared);
     }
 
-    return std::make_unique<WanderingState>(_graph, _restTarget, _energy, context);
+    return std::make_unique<WanderingState>(_graph, _restTarget, _energy, context, _isScared);
   }
 
   void State::collide(){};
