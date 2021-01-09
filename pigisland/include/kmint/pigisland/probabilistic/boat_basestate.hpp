@@ -17,9 +17,12 @@ namespace pigisland {
     void setContext(boat*);
     void boardPig();
     void setdocks(map::map_graph& g);
+    void calculateStepCost();
+    int getStepWeight();
   protected:
     std::vector<pig> _collectedPigs;
     boat* _context;
+    int _nextStepWeight;
     int _paintDamage;
     const int _paintDamageThreshold = 100;
     std::map<map::map_node*, float> _chances;

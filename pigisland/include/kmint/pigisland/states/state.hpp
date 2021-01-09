@@ -9,14 +9,17 @@ namespace pigisland {
   class State {
     public:
       State(map::map_graph& graph);
-      State(map::map_graph& graph, map::map_node* restTarget, int energy,  shark* context);
+      State(map::map_graph& graph, map::map_node* restTarget, int energy,  shark* context,  bool isScared);
       virtual ~State() = default;
       virtual void sense();
       virtual void think();
-      virtual void move() = 0;
+      virtual void move();
       virtual void setContext(shark*);
       virtual void collide();
+      virtual void calculateNextStep() = 0;
+      void calculateStepCost();
       void setNextStepOnPath();
+      int getStepWeight();
       void createPath(Node*);
       void eat();
       void resetEnergy();
@@ -27,13 +30,13 @@ namespace pigisland {
       shark* context;
 
     protected:
-      void wander();
-
+      int _nextStepWeight = 0;
       std::list<Node*> _path;
-      std::list<kmint::map::map_node *>::iterator _nextStep;
+      std::list<kmint::map::map_node *>::iterator _nextPathStep;
       map::map_graph& _graph;
       map::map_node* _smellTarget;
       map::map_node* _restTarget;
+      map::map_node* _nextStep;
 
       bool _isScared;
       int _energy;

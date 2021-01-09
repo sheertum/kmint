@@ -17,8 +17,8 @@ namespace pigisland {
   void boat::act(delta_time dt) {
     t_passed_ += dt;
     _state->boardPig();
-    if (to_seconds(t_passed_) >= 1) {
-      _state->sense();
+    _state->sense();
+    if (to_seconds(t_passed_) >= _state->getStepWeight()) {
       _state->move();
       t_passed_ = from_seconds(0);
     }
