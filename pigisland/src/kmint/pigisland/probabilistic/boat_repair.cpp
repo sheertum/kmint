@@ -21,6 +21,7 @@ namespace pigisland {
 	}
 
 	void BoatRepairState::sense() {
+		calculateStepCost();
 		if(_paintDamage != _paintDamageThreshold){
 			_context->changeState(std::make_unique<BoatWanderState>(_paintDamage, _chances, _docks));
 		}

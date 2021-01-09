@@ -44,11 +44,11 @@ namespace pigisland {
         _smellTarget = &find_closest_node_to(_graph, a.location());
       }
     }
-    calculateNextStep();
     calculateStepCost();
   }
 
   void State::think(){    
+    calculateNextStep();
     auto newState = getNewState();
     if(newState != nullptr ){
       context->updateState(std::move(newState));
@@ -71,13 +71,22 @@ namespace pigisland {
 
   void State::calculateStepCost()
   {
-    for(int i = 0; i < context->node().num_edges(); i++)
+    auto type = &context->node().node_info().kind;
+    if(*type == 'R')
     {
-      if(_nextStep == &context->node()[i].to())
-      {
-        _nextStepWeight = context->node()[i].weight();
-      }
+      _nextStepWeight = 4; 
+    } 
+    else 
+    {
+      _nextStepWeight = 1;
     }
+    // for(int i = 0; i < context->node().num_edges(); i++)
+    // {
+    //   if(_nextStep == &context->node()[i].to())
+    //   {
+    //     _nextStepWeight = context->node()[i].weight();
+    //   }
+    // }
   }
 
   void State::eat()

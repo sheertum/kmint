@@ -52,5 +52,23 @@ namespace pigisland {
       }
     }
   }
+
+  void BaseState::calculateStepCost()
+  {
+    auto type = &_context->node().node_info().kind;
+    if(*type == 'R')
+    {
+      _nextStepWeight = 4; 
+    } 
+    else 
+    {
+      _nextStepWeight = 1;
+    }
+  }
+
+  int BaseState::getStepWeight()
+  {
+    return _nextStepWeight;
+  }
 }
 }

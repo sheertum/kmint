@@ -16,8 +16,8 @@ shark::shark(map::map_graph& g, map::map_node& initial_node) : play::map_bound_a
 void shark::act(delta_time dt) {
   t_passed_ += dt;
   _state->collide();
+  _state->sense();
   if (to_seconds(t_passed_) >= _state->getStepWeight()) {
-    _state->sense();
     _state->think();
     _state->move();
     t_passed_ = from_seconds(0);
