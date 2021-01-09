@@ -80,24 +80,6 @@ namespace pigisland {
       i->remove();
     }
   }
-
-  map::map_node* State::getSmellTarget()
-  {
-    return _smellTarget;
-  }
-
-  bool State::isScared()
-  {
-    return _isScared;
-  }
-
-  int State::getEnergy(){
-    return _energy;
-  }
-
-  map::map_graph& State::getGraph(){
-    return _graph;
-  }
   
   void State::resetEnergy()
   {
@@ -117,28 +99,22 @@ namespace pigisland {
 
   std::unique_ptr<State> State::updateTransitionState(State* state)
   {
-    map::map_node* restTarget = getRestTarget();
-    std::cout << _energy << std::endl;
     if(_energy <= 0)
     {
       return std::make_unique<RestingState>(_graph, _restTarget, _energy, context);
-      std::cout << "RestingState" << std::endl;
     }
 
     if(_isScared)
     {
       return std::make_unique<FleeState>(_graph, _restTarget, _energy, context);
-      std::cout << "FleeState" << std::endl;
     }
     
     if(_smellTarget)
     {
       return std::make_unique<HuntingState>(_graph, _restTarget, _energy, context, _smellTarget);
-      std::cout << "HuntingState" << std::endl;
     }
 
     return std::make_unique<WanderingState>(_graph, _restTarget, _energy, context);
-    std::cout << "WanderingState" << std::endl;
   }
 
   void State::collide(){};

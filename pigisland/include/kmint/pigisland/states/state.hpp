@@ -20,16 +20,11 @@ namespace pigisland {
       void createPath(Node*);
       void eat();
       void resetEnergy();
-      map::map_node* getSmellTarget();
-      bool hasSmell();
-      bool isScared();
-      int getEnergy();
-      shark* context;
       std::unique_ptr<State> getNewState();
       std::unique_ptr<State>& gestState();
-      map::map_node* getRestTarget() { return _restTarget; }
-      map::map_graph& getGraph();
       std::unique_ptr<State> updateTransitionState(State* state);
+
+      shark* context;
 
     protected:
       void wander();
