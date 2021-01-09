@@ -3,31 +3,34 @@
 
 namespace kmint {
 namespace pigisland {
-  void RestingState::setContext(shark* context_)
-  {
-    State::setContext(context_);
-    setPath(context->getRestTarget());
+  RestingState::RestingState(map::map_graph& graph, map::map_node* restTarget, int energy,  shark* context, bool isScared) : State(graph, restTarget, energy, context, isScared){
+    createPath(_restTarget);
+    calculateNextStep();
+    calculateStepCost();
   }
-
 
   void RestingState::sense()
   {
     State::sense();
-    if(context->location() == context->getRestTarget()->location()){
-      context->resetEnergy();
-      context->updateState();
+    if(context->location() == _restTarget->location()){
+      resetEnergy();
     }
   }
 
   void RestingState::think(){
-    if(context->getEnergy() == 100){
-      context->updateState();
+    calculateNextStep();
+    if(_energy == 100){
+      context->updateState(updateTransitionState(this));
     }
   }
 
-  void RestingState::move()
+  void RestingState::calculateNextStep() 
   {
-    moveToTarget();
+    _nextStep = *_nextPathStep;
+    _nextStep->tagged(false);
+    if (_nextPathStep != _path.begin()) {
+      _nextPathStep--;
+    }
   }
 }
 }
