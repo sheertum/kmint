@@ -18,6 +18,7 @@ namespace pigisland {
   }
 
   void RestingState::think(){
+    calculateNextStep();
     if(_energy == 100){
       context->updateState(updateTransitionState(this));
     }
