@@ -21,7 +21,7 @@ namespace pigisland {
     std::vector<pig> _collectedPigs;
     boat* _context;
     int _paintDamage;
-    const int _paintDamageThreshold = 2;
+    const int _paintDamageThreshold = 100;
     std::map<map::map_node*, float> _chances;
     std::map<map::map_node*, std::tuple<int, int>> _docks;
   };
