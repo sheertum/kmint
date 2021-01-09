@@ -67,7 +67,7 @@ Cost AStar::h(const Node& node, const Node& end)
 	Cost x = std::abs(node.location().x() - end.location().x());
 	Cost y = std::abs(node.location().y() - end.location().y());
 
-	return x + y;
+	return (x + y) / 32;;
 }
 
 std::list<Node*> AStar::constructPath(std::map<Node*,Node*>& from, Node& current)

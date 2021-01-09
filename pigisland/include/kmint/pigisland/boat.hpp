@@ -4,6 +4,7 @@
 #include "kmint/map/map.hpp"
 #include "kmint/play.hpp"
 #include "kmint/primitives.hpp"
+#include "kmint/pigisland/probabilistic/boat_basestate.hpp"
 
 namespace kmint {
 namespace pigisland {
@@ -19,11 +20,15 @@ public:
 	// geeft de lengte van een zijde van de collision box van deze actor terug.
 	// Belangrijk voor collision detection
 	scalar collision_range() const override { return 16.0; }
+
+	void changeState(std::unique_ptr<BaseState>);
+	std::unique_ptr<BaseState>& getState();
 private:
 	// hoeveel tijd is verstreken sinds de laatste beweging
 	delta_time t_passed_{};
 	// weet hoe de koe getekend moet worden
 	play::image_drawable drawable_;
+	std::unique_ptr<BaseState> _state;
 };
 
 } // namespace pigisland
