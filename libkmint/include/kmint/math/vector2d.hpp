@@ -20,6 +20,10 @@ public:
 
   inline Scalar length() const { return std::sqrt(x_ * x_ + y_ * y_); }
 
+  basic_vector2d cross(const basic_vector2d& other) { 
+      return (x_ * other.y()) - (y_ * other.x());
+  }
+
   constexpr bool operator==(basic_vector2d other) const noexcept {
     return x_ == other.x_ && y_ == other.y_;
   }

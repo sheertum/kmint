@@ -15,6 +15,8 @@ public:
 	Wheel& takeTheWheel();
 	const Wheel& takeTheWheel() const;
 
+	const kmint::math::vector2d& heading() const;
+
 private:
 	void updateHeading();
 

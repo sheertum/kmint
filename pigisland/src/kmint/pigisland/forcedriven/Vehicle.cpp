@@ -52,3 +52,7 @@ double Vehicle::maxSpeed() const {
 const vector2d& Vehicle::velocity() const {
 	return _velocity;
 }
+
+const vector2d& Vehicle::heading() const {
+	return _heading;
+}

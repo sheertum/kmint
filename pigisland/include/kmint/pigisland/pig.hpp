@@ -18,8 +18,12 @@ public:
   void act(delta_time dt) override;
 
   bool perceptive() const override { return true; }
-  scalar perception_range() const override { return 1000.f; }
+  scalar perception_range() const override { return 100.f; }
   bool incorporeal() const override { return false; }
+  scalar collision_range() const override { return 16.0; }
+
+  const Vehicle& getVehicle() const;
+  Vehicle& getVehicle();
 
 private:
   play::image_drawable drawable_;
