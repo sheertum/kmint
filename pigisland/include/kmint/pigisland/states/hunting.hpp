@@ -6,10 +6,9 @@ namespace kmint {
 namespace pigisland {
   class HuntingState : public State{
   public:
-    HuntingState() = default;
+    HuntingState(map::map_graph& graph, map::map_node* restTarget, int energy, shark* context_, map::map_node* smellTarget);
     virtual ~HuntingState() = default;
     void move() override;
-    void setContext(shark*) override;
     void collide() override;
   };
 }
