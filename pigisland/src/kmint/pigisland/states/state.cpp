@@ -62,7 +62,7 @@ namespace pigisland {
     }
     else {
       //TODO: reset visited nodes that weren't part of the path
-      context->updateState(getNewState());
+      context->updateState(updateTransitionState(this));
     }
   }
 
@@ -78,16 +78,6 @@ namespace pigisland {
   {
     for (auto i = context->begin_collision(); i != context->end_collision(); ++i) {
       i->remove();
-    }
-  }
-
-  std::unique_ptr<State> State::getNewState()
-  {
-    auto newstate = updateTransitionState(this);
-    if(typeid(*newstate) == typeid(*this)){
-    return nullptr;
-    } else {
-    return newstate;
     }
   }
 
@@ -114,9 +104,21 @@ namespace pigisland {
     _energy=100; 
   }
 
+  std::unique_ptr<State> State::getNewState()
+  {
+    auto newstate = updateTransitionState(this);
+      if(typeid(*newstate) == typeid(*this)){
+      return nullptr;
+    } 
+    else {
+      return newstate;
+    }
+  }
+
   std::unique_ptr<State> State::updateTransitionState(State* state)
   {
     map::map_node* restTarget = getRestTarget();
+    std::cout << _energy << std::endl;
     if(_energy <= 0)
     {
       return std::make_unique<RestingState>(_graph, _restTarget, _energy, context);

@@ -24,7 +24,6 @@ void shark::act(delta_time dt) {
   }
 }
 
-
 void shark::updateState(std::unique_ptr<State> newState){
   _state = std::move(newState);
 }

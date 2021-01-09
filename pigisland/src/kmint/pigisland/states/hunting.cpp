@@ -12,8 +12,9 @@ namespace pigisland {
   void HuntingState::move()
   {
     setNextStepOnPath();
+    _energy--;
     if (_nextStep == _path.begin()) {
-      context->updateState(getNewState());
+      context->updateState(updateTransitionState(this));
     }
   }
 
