@@ -17,13 +17,19 @@ public:
 
 	const kmint::math::vector2d& heading() const;
 
+	kmint::math::vector2d resitanceVector(double dt) const;
+
+	double mass() const;
+
+	kmint::math::vector2d _velocity;
+
 private:
 	void updateHeading();
 
 private:
 	double _mass;
 	double _maxSpeed;
-	kmint::math::vector2d _velocity;
+	double _resistance{300000};
 	kmint::math::vector2d _heading;
 	kmint::math::vector2d _right;
 	Wheel _wheel;

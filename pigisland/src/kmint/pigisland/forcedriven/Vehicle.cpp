@@ -15,9 +15,11 @@ vector2d Vehicle::updatePosition(double dt, const kmint::math::vector2d& current
 {
 	vector2d steeringForce = _wheel.forceSum();
 	vector2d acceleration = steeringForce / _mass;
-	
+
 	_velocity += acceleration * dt;
 	truncateVelocity(_maxSpeed);
+
+	updateHeading();
 
 	return currentPosition + (_velocity*dt);
 }
@@ -55,4 +57,12 @@ const vector2d& Vehicle::velocity() const {
 
 const vector2d& Vehicle::heading() const {
 	return _heading;
+}
+
+vector2d Vehicle::resitanceVector(double dt) const {
+	return (_velocity * _resistance * dt * -1)/_mass;
+}
+
+double Vehicle::mass() const {
+	return _mass;
 }

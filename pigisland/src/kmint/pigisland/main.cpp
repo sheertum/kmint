@@ -9,6 +9,7 @@
 #include "kmint/pigisland/AStar.h"
 #include "kmint/play.hpp"
 #include "kmint/ui.hpp"
+#include "kmint/random.hpp"
 #include <algorithm>
 #include <array>
 #include <iostream>
@@ -18,6 +19,22 @@
 
 using namespace kmint;
 
+std::vector<math::vector2d> new_random_pig_locations(std::size_t n) {
+    // 9, 0 --- 24, 0
+    // |        |
+    // 9, 22    24, 22
+
+    std::vector<math::vector2d> result;
+    result.resize(n);
+
+    for (auto& it : result) {
+        float x = random_int((9 * 32) + 16, (24 * 32) + 16);
+        float y = random_int((0 * 32) + 16, (22 * 32) + 16);
+        it = math::vector2d{ x,y };
+    }
+
+    return result;
+}
 
 int main() {
   // een app object is nodig om
@@ -43,7 +60,7 @@ int main() {
   //    node->tag(kmint::graph::node_tag::path);
   //}
 
-  auto locs = pigisland::random_pig_locations(100);
+  auto locs = new_random_pig_locations(100);
   for (auto loc : locs) {
     s.build_actor<pigisland::pig>(loc);
   }

@@ -91,6 +91,7 @@ std::vector<math::vector2d> random_pig_locations(std::size_t n) {
   });
   return result;
 }
+
 } // namespace pigisland
 
 } // namespace kmint

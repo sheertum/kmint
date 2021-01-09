@@ -28,6 +28,7 @@ add_executable(pigisland
   src/kmint/pigisland/forcedriven/Wheel.cpp
   src/kmint/pigisland/forcedriven/Vehicle.cpp
   src/kmint/pigisland/forcedriven/Wall.cpp
+  src/kmint/pigisland/forcedriven/Walls.cpp
   include/kmint/pigisland/PriorityMap.hpp)
 
 target_compile_features(pigisland PUBLIC cxx_std_17)

@@ -12,22 +12,22 @@ namespace pigisland {
   {
     if(_context->getEnergy() <= 0)
     {
-      std::cout << "resting" << std::endl;
+      //std::cout << "resting" << std::endl;
       return std::make_unique<RestingState>();
     }
 
     if(_context->isScared())
     {
-      std::cout << "fleeing" << std::endl;
+      //std::cout << "fleeing" << std::endl;
       return std::make_unique<FleeState>();
     }
     
     if(_context->hasSmell())
     {
-      std::cout << "hunting" << std::endl;
+      //std::cout << "hunting" << std::endl;
       return std::make_unique<HuntingState>();
     }
-    std::cout << "wandering" << std::endl;
+    //std::cout << "wandering" << std::endl;
     return std::make_unique<WanderingState>();
   }
 }

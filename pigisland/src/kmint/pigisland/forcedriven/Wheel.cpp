@@ -1,7 +1,10 @@
 #include "kmint/pigisland/forcedriven/Wheel.h"
 #include "kmint/pigisland/forcedriven/Vehicle.h"
-#include "kmint/pigisland/forcedriven/Wall.h"
+//#include "kmint/pigisland/forcedriven/Wall.h"
+#include "kmint/pigisland/forcedriven/Walls.h"
+#include "kmint/math/angle.hpp"
 
+#include <iostream>
 #include<numeric>
 
 using namespace kmint::math;
@@ -79,17 +82,61 @@ void Wheel::avoidWall(const Agent& agent) {
 		return;
 	}
 
-	Wall wall{ vector2d{16, 752}, vector2d{784, 752} };
+	vector2d h = normalize(agent.vehicle.velocity());
+	std::vector<vector2d> feelers = {	rotate(h, angle::from_degrees(-60)) * FEELER_LENGTH,
+										h * FEELER_LENGTH,	
+										rotate(h, angle::from_degrees(60)) * FEELER_LENGTH };
 
-	vector2d feeler = agent.vehicle.velocity();
+	for (const auto& feeler : feelers) {
+		Wall closestWall;
+		vector2d closestPoint{ 0,0 };
+		double closestDistance = std::numeric_limits<double>::infinity();
 
-	double distance;
-	vector2d closestPoint;
-	if (wall.intersect(agent.location, { agent.location + feeler }, distance, closestPoint)) {
-		vector2d overshoot = feeler - closestPoint;
+		for (auto& wall : Walls::getWalls()) {
+			double distance;
+			vector2d point;
 
-		vector2d normal{ 0,-1 };
-		vector2d result = normal * overshoot.length();
-		addForce(result);
+			if (wall.intersect(agent.location, { agent.location + feeler }, distance, point)) {
+
+				if (distance < closestDistance)
+				{
+					closestDistance = distance;
+					closestWall = wall;
+					closestPoint = point;
+				}
+			}
+		}
+
+		if (closestDistance < std::numeric_limits<double>::infinity()) {
+			vector2d overshoot = (agent.location + feeler) - closestPoint;
+			vector2d normal = closestWall.normal();
+			normal.y(normal.y() * -1);
+			vector2d result = normal * (std::pow(overshoot.length() * overshoot.length(), 2)) * agent.vehicle.mass();
+
+			if (FEELER_LENGTH - overshoot.length() < 5)
+			{
+				flushForces();
+			}
+			addForce(result);
+			//std::cout << result.x() << "\t" << result.y() << "\t" << overshoot.length() << "\t" << closestWall.from() <<  "\t" << closestWall.to() << '\n';
+		}
 	}
+
+
+}
+
+vector2d Wheel::exponatial(const kmint::math::vector2d& current, const kmint::math::vector2d& max, double lowestDivider, double toDivide) const{
+	double divider = (max - current).length();
+	if (divider <= lowestDivider)
+	{
+		divider = lowestDivider;
+	}
+
+	return (normalize(current)*(toDivide / divider));
+}
+
+double Wheel::exponatial(double current, double max, double lowestDivider, double toDivide) const {
+	double maxResult = 9999;
+	double result = 1 / max - current;
+	return (result > maxResult) ? maxResult : result;
 }

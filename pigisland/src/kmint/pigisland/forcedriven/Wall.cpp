@@ -1,10 +1,16 @@
 #include "kmint/pigisland/forcedriven/Wall.h"
-#include "..\..\..\..\include\kmint\pigisland\forcedriven\Wall.h"
 
-Wall::Wall(const vec& from, const vec& to) :
-_from{from},
-_to{to}
-{}
+using namespace kmint::math;
+
+Wall::Wall(const vec& from, const vec& to, const vector2d& normal) :
+_from{from * STEP_SIZE},
+_to{to * STEP_SIZE },
+_normal{ normal }
+{
+	_from += vec{ OFFSET,OFFSET };
+	_to += vec{ OFFSET,OFFSET };
+	_normal = normalize(normal);
+}
 
 //A = from
 //B = to
@@ -12,8 +18,10 @@ _to{to}
 //D = line
 //first = x
 //second = y
-bool Wall::intersect(const vec& position, const std::vector<vec>& feelers, double& distance, vec& intersectionPoint)
+bool Wall::intersect(const vec& position, const std::vector<vec>& feelers, double& distance, vec& intersectionPoint) const
 {
+	distance = std::numeric_limits<double>::infinity();
+
 	vec line = feelers[0];
 
 	float a1 = _to.y() - _from.y();
@@ -40,17 +48,37 @@ bool Wall::intersect(const vec& position, const std::vector<vec>& feelers, doubl
 	}
 
 	distance = (position - intersectionPoint).length();
+
+
 	return true;
 }
 
-bool Wall::inBound(float target, float position1, float position2) {
+bool Wall::inBound(float target, float position1, float position2) const{
 	float max = (position1 > position2) ? position1 : position2;
 	float min = (position1 < position2) ? position1 : position2;
 
 	return (target <= max && target >= min);
 }
 
-bool Wall::inBound(const vec& target, const vec& position1, const vec& position2) {
+bool Wall::inBound(const vec& target, const vec& position1, const vec& position2) const{
 	return	inBound(target.x(), position1.x(), position2.x()) &&
 			inBound(target.y(), position1.y(), position2.y());
+}
+
+vector2d Wall::normal() const {
+	return _normal;
+}
+
+vector2d Wall::from() const {
+	vec result = _from;
+	result -= vec{ 16, 16 };
+	result /= 32;
+	return result;
+}
+
+vector2d Wall::to() const {
+	vec result = _to;
+	result -= vec{ 16, 16 };
+	result /= 32;
+	return result;
 }
