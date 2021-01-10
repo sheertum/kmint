@@ -5,7 +5,7 @@
 
 namespace kmint {
 namespace pigisland {
-    BaseState::BaseState(int paintJob, std::map<Node*, float> chances, std::map<map::map_node*, std::tuple<int, int>> docks) : _paintDamage{ paintJob }, _chances{ chances }, _docks{ docks }, _context{nullptr} {}
+    BaseState::BaseState(int paintJob, std::map<Node*, float> chances, std::map<map::map_node*, std::tuple<int, int>> docks) : _paintDamage{ paintJob }, _chances{ chances }, _docks{ docks }, _context{nullptr}, _stateColor{0,0,0} {}
 
   void BaseState::setdocks(map::map_graph& g){
     if(_chances.size() == 0){
@@ -25,6 +25,12 @@ namespace pigisland {
 
   void BaseState::setContext(boat* context){
     _context = context;
+    setColor();
+  }
+
+  void BaseState::setColor()
+  {
+      _context->getDrawable().set_tint(_stateColor);
   }
 
   void BaseState::increasePaintDamage(){

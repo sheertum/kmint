@@ -20,7 +20,7 @@ public:
 	// geeft de lengte van een zijde van de collision box van deze actor terug.
 	// Belangrijk voor collision detection
 	scalar collision_range() const override { return 16.0; }
-
+  play::image_drawable& getDrawable() { return drawable_; }
 	void changeState(std::unique_ptr<BaseState>);
 	std::unique_ptr<BaseState>& getState();
 private:

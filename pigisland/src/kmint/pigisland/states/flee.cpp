@@ -7,6 +7,7 @@ namespace pigisland {
   FleeState::FleeState(map::map_graph& graph, map::map_node* restTarget, int energy,  shark* context,  bool isScared) : State(graph, restTarget, energy, context, isScared), _wanderingTick{10}{
     calculateNextStep();
     calculateStepCost();
+    _stateColor = graphics::color(0,255,0);
   }
 
   void FleeState::think()

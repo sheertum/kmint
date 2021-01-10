@@ -1,5 +1,6 @@
 #pragma once
 #include "kmint/pigisland/AStar.h"
+#include "kmint/graphics/color.hpp"
 #include <memory>
 
 namespace kmint {
@@ -26,10 +27,12 @@ namespace pigisland {
       std::unique_ptr<State> getNewState();
       std::unique_ptr<State>& gestState();
       std::unique_ptr<State> updateTransitionState(State* state);
+      void setColor();
 
       shark* context;
 
     protected:
+      graphics::color _stateColor;
       int _nextStepWeight = 0;
       std::list<Node*> _path;
       std::list<kmint::map::map_node *>::iterator _nextPathStep;

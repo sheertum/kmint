@@ -9,6 +9,7 @@ namespace pigisland {
     createPath(smellTarget);
     calculateNextStep();
     calculateStepCost();
+    _stateColor = graphics::color(255,0,0);
   }
 
   void HuntingState::sense() {
