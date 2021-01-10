@@ -1,5 +1,6 @@
 #pragma once
 #include "kmint/pigisland/AStar.h"
+#include "kmint/graphics/color.hpp"
 #include "kmint/pigisland/pig.hpp"
 #include <map>
 namespace kmint {
@@ -19,8 +20,10 @@ namespace pigisland {
     void setdocks(map::map_graph& g);
     void calculateStepCost();
     int getStepWeight();
+    void setColor();
   protected:
     std::vector<pig> _collectedPigs;
+    graphics::color _stateColor;
     boat* _context;
     int _nextStepWeight;
     int _paintDamage;

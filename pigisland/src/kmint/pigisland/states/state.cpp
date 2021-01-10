@@ -86,13 +86,6 @@ namespace pigisland {
     {
       _nextStepWeight = 1;
     }
-    // for(int i = 0; i < context->node().num_edges(); i++)
-    // {
-    //   if(_nextStep == &context->node()[i].to())
-    //   {
-    //     _nextStepWeight = context->node()[i].weight();
-    //   }
-    // }
   }
 
   void State::eat()
