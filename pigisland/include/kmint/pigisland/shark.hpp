@@ -25,7 +25,7 @@ public:
   bool perceptive() const override { return true; }
   // geeft het bereik aan waarbinnen een haai
   // andere actors kan waarnemen.
-  scalar perception_range() const override { return 1000.f; }
+  scalar perception_range() const override { return 200.f; }
 
   play::image_drawable& getDrawable() { return drawable_; }
   void updateState(std::unique_ptr<State> newState);
