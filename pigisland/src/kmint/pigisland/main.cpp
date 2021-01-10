@@ -7,6 +7,7 @@
 #include "kmint/pigisland/resources.hpp"
 #include "kmint/pigisland/shark.hpp"
 #include "kmint/pigisland/AStar.h"
+#include "Evolution.hpp"
 #include "kmint/play.hpp"
 #include "kmint/ui.hpp"
 #include "kmint/random.hpp"
@@ -19,6 +20,29 @@
 #include <functional>
 
 using namespace kmint;
+
+void evaluatePopulation(play::stage& s) {
+    double sharkLikeNess = 0;
+    double boatLikeNess = 0;
+    int actorCount = 0;
+    for (const auto& it : s)
+    {
+        if (typeid(it) == typeid(pigisland::pig))
+        {
+            actorCount++;
+            uint16_t tempSharkLike = ((pigisland::pig&)it)._sharkLikeNess;
+            uint16_t tempBoatLike = ((pigisland::pig&)it)._boatFetisj;
+
+            sharkLikeNess += pigisland::pig::toFleeSeekValue(tempSharkLike);
+            boatLikeNess += pigisland::pig::toFleeSeekValue(tempBoatLike);
+        }
+    }
+
+    sharkLikeNess /= actorCount;
+    boatLikeNess /= actorCount;
+
+    std::cout << "SharkLikeNess: " << std::to_string(sharkLikeNess) << "\t" << "BoatLikeNess: " << std::to_string(boatLikeNess) << std::endl;
+}
 
 std::vector<math::vector2d> new_random_pig_locations(std::size_t n) {
     // 9, 0 --- 24, 0
@@ -63,6 +87,8 @@ int main() {
   //    node->tag(kmint::graph::node_tag::path);
   //}
 
+
+
   auto locs = new_random_pig_locations(100);
   for (auto loc : locs) {
     s.build_actor<pigisland::pig>(loc);
@@ -71,6 +97,8 @@ int main() {
   // Maak een event_source aan (hieruit kun je alle events halen, zoals
   // toetsaanslagen)
   ui::events::event_source event_source{};
+  
+  evaluatePopulation(s);
 
   // main_loop stuurt alle actors aan.
   main_loop(s, window, [&](delta_time dt, loop_controls &ctl) {
@@ -80,11 +108,18 @@ int main() {
     // main-loop aan te sturen.
       if (s.reset) {
           auto locs = new_random_pig_locations(100);
+          std::vector<std::vector<uint16_t>> newPigis = pigisland::Evolution::getInstance().generateGeneration(100);
+
           for (auto loc : locs) {
-              s.build_actor<pigisland::pig>(loc);
+              pigisland::pig& piggy = s.build_actor<pigisland::pig>(loc);
+              piggy.setData(newPigis.back());
+              newPigis.pop_back();
           }
           s.reset = false;
+          evaluatePopulation(s);
       }
+
+    
 
     for (ui::events::event &e : event_source) {
       // event heeft een methode handle_quit die controleert

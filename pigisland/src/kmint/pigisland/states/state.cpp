@@ -8,7 +8,7 @@
 #include "kmint/pigisland/boat.hpp"
 #include "kmint/map/map.hpp"
 #include "kmint/random.hpp"
-
+#include "kmint/pigisland/Evolution.hpp"
 
 namespace kmint {
 namespace pigisland {
@@ -92,7 +92,14 @@ namespace pigisland {
   void State::eat()
   {
     for (auto i = context->begin_collision(); i != context->end_collision(); i++) {
-      i->remove();
+        if (typeid((*i)) == typeid(pig))
+        {
+            Evolution::getInstance().addPig(((pig&)*i).data(), 1);
+            i->remove();
+        }
+        else if (typeid((*i)) == typeid(boat))
+        {
+        }
     }
   }
   

@@ -26,7 +26,7 @@ void shark::act(delta_time dt) {
 }
 
 void shark::updateState(std::unique_ptr<State> newState){
-    std::cout << typeid(*newState).name() << std::endl;
+    //std::cout << typeid(*newState).name() << std::endl;
     _state = std::move(newState);
     if (_state->context) {
         _state->setColor();

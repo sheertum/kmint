@@ -14,6 +14,7 @@ namespace pigisland {
 class pig : public play::free_roaming_actor {
 public:
   pig(math::vector2d location);
+  pig(math::vector2d location, uint16_t cohesion, uint16_t seperation, uint16_t alignment, uint16_t sharkLikeNess, uint16_t boatFetisj);
   const ui::drawable &drawable() const override { return drawable_; }
 
   void act(delta_time dt) override;
@@ -26,6 +27,13 @@ public:
   const Vehicle& getVehicle() const;
   Vehicle& getVehicle();
 
+  void setData(const std::vector<uint16_t>& data);
+
+  std::vector<uint16_t> data() const override;
+
+  static double toFleeSeekValue(uint16_t value);
+
+  uint16_t _cohesion, _seperation, _alignment, _sharkLikeNess, _boatFetisj;
 private:
   bool _wanderPig;
   play::image_drawable drawable_;

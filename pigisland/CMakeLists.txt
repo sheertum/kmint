@@ -17,7 +17,9 @@ add_executable(pigisland
   src/kmint/pigisland/resources.cpp
   src/kmint/pigisland/shark.cpp
   src/kmint/pigisland/boat.cpp
+  src/kmint/pigisland/Evolution.hpp
   src/kmint/pigisland/pig.cpp 
+  src/kmint/pigisland/Evolution.hpp 
   src/kmint/pigisland/AStar/AStar.cpp
   src/kmint/pigisland/states/state.cpp
   src/kmint/pigisland/states/hunting.cpp

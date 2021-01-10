@@ -2,6 +2,7 @@
 #include "kmint/pigisland/node_algorithm.hpp"
 #include "kmint/pigisland/boat.hpp"
 #include "kmint/pigisland/pig.hpp"
+#include "kmint/pigisland/Evolution.hpp"
 
 namespace kmint {
 namespace pigisland {
@@ -50,7 +51,8 @@ namespace pigisland {
   void BaseState::boardPig(){
     for (auto i = _context->begin_collision(); i != _context->end_collision(); ++i) {
       if(typeid(*i) == typeid(pig)){
-        i->location() = kmint::math::vector2d{INFINITY, INFINITY};
+        Evolution::getInstance().addPig(((pig&)*i).data(), 4);
+        i->remove();
       }
     }
   }

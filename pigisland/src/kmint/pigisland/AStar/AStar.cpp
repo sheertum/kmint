@@ -17,7 +17,7 @@ struct comp
 	}
 };
 
-std::list<Node*> AStar::getPath(Node& start, Node& end, bool& found)
+std::list<Node*> AStar::getPath(Node& start, Node& end, bool& found, bool draw)
 {
 	found = false;
 
