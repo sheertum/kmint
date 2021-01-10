@@ -10,6 +10,7 @@ namespace math {
 constexpr scalar pi = static_cast<scalar>(3.14159265358979323846);
 
 class angle {
+public:
   scalar value_;
   constexpr explicit angle(scalar value) noexcept : value_{value} {}
 

@@ -34,7 +34,7 @@ std::list<Node*> AStar::getPath(Node& start, Node& end, bool& found)
 
 	while (!open.empty()) {
 		Node& current = *open.top().key;
-		current.tag(kmint::graph::node_tag::path);
+		//current.tag(kmint::graph::node_tag::path);
 		if (&current == &end) {
 			found = true;
 			return constructPath(from, current);
@@ -45,13 +45,13 @@ std::list<Node*> AStar::getPath(Node& start, Node& end, bool& found)
 		for (size_t i = 0; i < current.num_edges(); i++)
 		{
 			Node& neighbour = current[i].to();
-			Cost scoreToNeighbour = gScore[&current] + current[i].weight();
+			Cost tentative_gScore = gScore[&current] + current[i].weight();
 
 			Cost scoreNeighbour = (gScore.find(&neighbour) != gScore.end()) ? gScore[&neighbour] : std::numeric_limits<Cost>::infinity();
-			if (scoreToNeighbour < scoreNeighbour) {
+			if (tentative_gScore < scoreNeighbour) {
 				from[&neighbour] = &current;
-				gScore[&neighbour] = scoreToNeighbour;
-				fScore[&neighbour] = scoreToNeighbour + h(neighbour, end);
+				gScore[&neighbour] = tentative_gScore;
+				fScore[&neighbour] = tentative_gScore + h(neighbour, end);
 				if (!open.exists(&neighbour)) {
 					open.push(&neighbour, fScore[&neighbour]);
 				}
@@ -80,6 +80,12 @@ std::list<Node*> AStar::constructPath(std::map<Node*,Node*>& from, Node& current
 		temp = from[temp];
 		path.push_back(temp);
 	}
+
+	auto it = path.end();
+	it--;
+
+	Node* test = *it;
+	test->tag(kmint::graph::node_tag::path);
 
 	return path;
 }

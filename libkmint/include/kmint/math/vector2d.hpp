@@ -18,6 +18,12 @@ public:
   constexpr Scalar y() const noexcept { return y_; }
   constexpr void y(Scalar newY) noexcept { y_ = newY; }
 
+  inline Scalar length() const { return std::sqrt(x_ * x_ + y_ * y_); }
+
+  basic_vector2d cross(const basic_vector2d& other) { 
+      return (x_ * other.y()) - (y_ * other.x());
+  }
+
   constexpr bool operator==(basic_vector2d other) const noexcept {
     return x_ == other.x_ && y_ == other.y_;
   }
