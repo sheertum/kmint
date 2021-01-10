@@ -75,6 +75,15 @@ void stage::act(delta_time dt) {
     a.act(dt);
   }
 
+  if (reset) {
+    auto it = actors_.begin();
+    it += 4;
+    while (it != actors_.end()) {
+    auto &aptr = *it;
+    it = actors_.erase(it);
+    }
+  }
+
   auto it = actors_.begin();
   while (it != actors_.end()) {
     if (auto &aptr = *it; aptr->removed()) {

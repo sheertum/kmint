@@ -8,6 +8,7 @@ namespace kmint {
 namespace pigisland {
 	BoatRepairState::BoatRepairState(int paintJob, std::map<Node*, float> chances, std::map<map::map_node*, std::tuple<int, int>> docks) : BaseState(paintJob, chances, docks), _path{}, _pickedDock{}, _nextStep{} {
 		_pickedDock = pickDock();
+		_stateColor = graphics::color(0,255,255);
 	}
   
 	void BoatRepairState::move() {

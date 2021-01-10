@@ -6,9 +6,13 @@
 
 namespace kmint {
 namespace pigisland {
-	BoatWanderState::BoatWanderState(int paintJob, std::map<Node*, float> chances, std::map<map::map_node*, std::tuple<int, int>> docks) : BaseState(paintJob, chances, docks) {}
+	BoatWanderState::BoatWanderState(int paintJob, std::map<Node*, float> chances, std::map<map::map_node*, std::tuple<int, int>> docks) : BaseState(paintJob, chances, docks) {
+		_stateColor = graphics::color(255,0,255);
+	}
 	
-	BoatWanderState::BoatWanderState() : BaseState(0, std::map<Node*, float> {}, std::map<map::map_node*, std::tuple<int, int>> {}) {}
+	BoatWanderState::BoatWanderState() : BaseState(0, std::map<Node*, float> {}, std::map<map::map_node*, std::tuple<int, int>> {}) {
+		_stateColor = graphics::color(255,0,255);
+	}
 
 	void BoatWanderState::move() {
 		int next_index = random_int(0, _context->node().num_edges());

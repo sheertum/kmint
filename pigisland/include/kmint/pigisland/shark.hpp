@@ -5,7 +5,7 @@
 #include "kmint/play.hpp"
 #include "kmint/primitives.hpp"
 #include "kmint/pigisland/states/state.hpp"
-
+#include <functional>
 namespace kmint {
 namespace pigisland {
 
@@ -27,15 +27,16 @@ public:
   // andere actors kan waarnemen.
   scalar perception_range() const override { return 1000.f; }
 
+  play::image_drawable& getDrawable() { return drawable_; }
   void updateState(std::unique_ptr<State> newState);
 
+  std::function<void()> resetPigs;
 private:
-  std::unique_ptr<State> _state;
-  
   // hoeveel tijd is verstreken sinds de laatste beweging
   delta_time t_passed_{};
   // weet hoe de koe getekend moet worden
   play::image_drawable drawable_;
+  std::unique_ptr<State> _state;
 };
 
 } // namespace pigisland

@@ -16,6 +16,7 @@
 #include <random>
 #include <vector>
 #include <set>
+#include <functional>
 
 using namespace kmint;
 
@@ -53,9 +54,11 @@ int main() {
   s.build_actor<play::map_actor>(math::vector2d{0.f, 0.f}, map.graph());
   s.build_actor<pigisland::boat>(graph,
                                  pigisland::find_node_of_kind(graph, '1'));
-  s.build_actor<pigisland::shark>(graph,
+  pigisland::shark* shark = &s.build_actor<pigisland::shark>(graph,
                                   pigisland::find_node_of_kind(graph, 'K'));
-
+  shark->resetPigs = [&]() {
+      s.reset = true;
+  };
   //for (auto& node : path) {
   //    node->tag(kmint::graph::node_tag::path);
   //}
@@ -75,7 +78,14 @@ int main() {
     // sinds de vorige keer dat deze lambda werd aangeroepen
     // loop controls is een object met eigenschappen die je kunt gebruiken om de
     // main-loop aan te sturen.
-      
+      if (s.reset) {
+          auto locs = pigisland::random_pig_locations(100);
+          for (auto loc : locs) {
+              s.build_actor<pigisland::pig>(loc);
+          }
+          s.reset = false;
+      }
+
     for (ui::events::event &e : event_source) {
       // event heeft een methode handle_quit die controleert
       // of de gebruiker de applicatie wilt sluiten, en zo ja
