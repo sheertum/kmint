@@ -12,7 +12,7 @@ namespace pigisland {
 
 pig::pig(math::vector2d location)
   : play::free_roaming_actor{location},
-    drawable_{ *this, pig_image() }, _dikkeBMW{1,30},
+    drawable_{ *this, pig_image() }, _dikkeBMW{0.5,30},
     _wander{0, 0, 10},
     _wanderPig(random_int(0,9) % 2)
 {
@@ -46,10 +46,10 @@ void pig::act(delta_time dt) {
             const pig&  piggy = (const pig&)a;
             neighbours.push_back(Agent{ a.location(), piggy.getVehicle()});
         }else if (typeid(a) == typeid(shark)) {
-            _dikkeBMW.takeTheWheel().flee(a.location(), _dikkeBMW, location(), 300);
+            _dikkeBMW.takeTheWheel().flee(a.location(), _dikkeBMW, location(), 1);
         }
         else if (typeid(a) == typeid(boat)) {
-            _dikkeBMW.takeTheWheel().seek(a.location(), _dikkeBMW, location(), 150);
+            _dikkeBMW.takeTheWheel().seek(a.location(), _dikkeBMW, location(), 1);
         }
     }
 

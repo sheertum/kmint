@@ -24,12 +24,20 @@ vector2d Wheel::forceSum() const {
 
 void Wheel::seek(const vector2d& targetPosition, const Vehicle& vehicle, const kmint::math::vector2d& currentPosition, double factor){
 	vector2d desiredVelocity = normalize(targetPosition - currentPosition) * vehicle.maxSpeed();
-	addForce((desiredVelocity - vehicle.velocity()) * factor);
+	addForce((desiredVelocity - vehicle.velocity()) * toFleeSeekValue(factor));
 }
 
 void Wheel::flee(const kmint::math::vector2d& targetPosition, const Vehicle& vehicle, const kmint::math::vector2d& currentPosition, double factor) {
 	vector2d desiredVelocity = normalize(currentPosition - targetPosition) * vehicle.maxSpeed();
-	addForce((desiredVelocity - vehicle.velocity()) * factor);
+	addForce((desiredVelocity - vehicle.velocity()) * toFleeSeekValue(factor));
+}
+
+double Wheel::toFleeSeekValue(double factor) const {
+	if (std::abs(factor) > 1)
+	{
+		factor /= std::abs(factor);
+	}
+	return (1 / (1.00001 - factor)) * factor;
 }
 
 void Wheel::flushForces() {

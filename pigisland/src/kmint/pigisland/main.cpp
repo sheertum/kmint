@@ -63,7 +63,7 @@ int main() {
   //    node->tag(kmint::graph::node_tag::path);
   //}
 
-  auto locs = new_random_pig_locations(300);
+  auto locs = new_random_pig_locations(100);
   for (auto loc : locs) {
     s.build_actor<pigisland::pig>(loc);
   }
@@ -79,7 +79,7 @@ int main() {
     // loop controls is een object met eigenschappen die je kunt gebruiken om de
     // main-loop aan te sturen.
       if (s.reset) {
-          auto locs = pigisland::random_pig_locations(100);
+          auto locs = new_random_pig_locations(100);
           for (auto loc : locs) {
               s.build_actor<pigisland::pig>(loc);
           }
