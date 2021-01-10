@@ -54,7 +54,7 @@ namespace pigisland {
         //_collectedPigs.push_back(*i);
         //std::cout << "verzamelde varkens" << _collectedPigs.size() << std::endl;
         std::cout << "piggy entered the boat" << std::endl;
-        i->remove();
+        i->location() = kmint::math::vector2d{INFINITY, INFINITY};
       }
     }
   }

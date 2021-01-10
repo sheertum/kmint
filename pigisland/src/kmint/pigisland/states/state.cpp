@@ -29,7 +29,7 @@ namespace pigisland {
 
   void State::sense()
   {
-    float smallestDistance = 300;
+    float smallestDistance = 100;
     _isScared = false;
     map::map_node* newSmellTarget = nullptr;
 
@@ -41,6 +41,7 @@ namespace pigisland {
       
       if(typeid(a) == typeid(boat)){
         _isScared = (distance <= 50);
+        _smellTarget = nullptr;
         return;
       }
 
