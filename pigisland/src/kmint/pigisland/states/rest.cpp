@@ -7,12 +7,13 @@ namespace pigisland {
     createPath(_restTarget);
     calculateNextStep();
     calculateStepCost();
+    _stateColor = graphics::color(0,0,255);
   }
 
   void RestingState::sense()
   {
     State::sense();
-    if(context->location() == _restTarget->location()){
+    if (&context->node() == *_path.begin()){
       resetEnergy();
     }
   }
@@ -20,6 +21,7 @@ namespace pigisland {
   void RestingState::think(){
     calculateNextStep();
     if(_energy == 100){
+      //context->resetPigs();
       context->updateState(updateTransitionState(this));
     }
   }

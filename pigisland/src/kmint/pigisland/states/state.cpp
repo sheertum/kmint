@@ -12,14 +12,19 @@
 
 namespace kmint {
 namespace pigisland {
-    State::State(map::map_graph& graph) : _graph{ graph }, _energy{ 100 }, _smellTarget{ nullptr }, context{ nullptr }, _restTarget{ nullptr }, _isScared{false}{
+    State::State(map::map_graph& graph) : _graph{ graph }, _energy{ 100 }, _smellTarget{ nullptr }, context{ nullptr }, _restTarget{ nullptr }, _isScared{ false }, _stateColor{ 0,0,0 }{
     _restTarget = &find_node_of_kind(graph, 'K');
   }
 
-  State::State(map::map_graph& graph, map::map_node* restTarget, int energy, shark* context_, bool isScared) : _graph{ graph }, _energy{ energy }, _restTarget{ restTarget }, context{ context_ }, _isScared{isScared}, _smellTarget{nullptr} {}
+  State::State(map::map_graph& graph, map::map_node* restTarget, int energy, shark* context_, bool isScared) : _graph{ graph }, _energy{ energy }, _restTarget{ restTarget }, context{ context_ }, _isScared{isScared}, _smellTarget{nullptr}, _stateColor{ 0,0,0 } {}
 
   void State::setContext(shark* context_){
       context = context_;
+  }
+
+  void State::setColor()
+  {
+      context->getDrawable().set_tint(_stateColor);
   }
 
   void State::sense()
@@ -41,9 +46,10 @@ namespace pigisland {
 
       if(smallestDistance >= distance){
         smallestDistance = distance;
-        _smellTarget = &find_closest_node_to(_graph, a.location());
+        newSmellTarget = &find_closest_node_to(_graph, a.location());
       }
     }
+    _smellTarget = newSmellTarget;
     calculateStepCost();
   }
 
@@ -91,7 +97,7 @@ namespace pigisland {
 
   void State::eat()
   {
-    for (auto i = context->begin_collision(); i != context->end_collision(); ++i) {
+    for (auto i = context->begin_collision(); i != context->end_collision(); i++) {
       i->remove();
     }
   }
