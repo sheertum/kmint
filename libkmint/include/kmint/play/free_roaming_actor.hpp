@@ -12,6 +12,10 @@ public:
   free_roaming_actor(math::vector2d location) : actor{}, location_{location} {}
   math::vector2d location() const override { return location_; }
 
+  virtual std::vector<uint16_t> data() const {
+    return std::vector<uint16_t>{};
+  }
+
 protected:
   void location(math::vector2d loc) { location_ = loc; }
 

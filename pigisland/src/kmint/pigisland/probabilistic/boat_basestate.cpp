@@ -2,6 +2,7 @@
 #include "kmint/pigisland/node_algorithm.hpp"
 #include "kmint/pigisland/boat.hpp"
 #include "kmint/pigisland/pig.hpp"
+#include "kmint/pigisland/Evolution.hpp"
 
 namespace kmint {
 namespace pigisland {
@@ -50,10 +51,7 @@ namespace pigisland {
   void BaseState::boardPig(){
     for (auto i = _context->begin_collision(); i != _context->end_collision(); ++i) {
       if(typeid(*i) == typeid(pig)){
-          //TODO: Hoe kan ik het beste een pig opslaan?
-        //_collectedPigs.push_back(*i);
-        //std::cout << "verzamelde varkens" << _collectedPigs.size() << std::endl;
-        std::cout << "piggy entered the boat" << std::endl;
+        Evolution::getInstance().addPig(((pig&)*i).data(), 4);
         i->remove();
       }
     }

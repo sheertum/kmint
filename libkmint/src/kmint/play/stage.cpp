@@ -4,11 +4,16 @@
 #include "kmint/ui/drawable.hpp"
 #include "kmint/ui/window.hpp"
 #include "kmint/util/finally.hpp"
+#include "../../pigisland/include/kmint/pigisland/pig.hpp"
+#include "../../pigisland/src/kmint/pigisland/Evolution.hpp"
 #include <algorithm>
 #include <iterator>
 #include <optional>
 #include <stdexcept>
 #include <vector>
+
+
+using namespace kmint::pigisland;
 
 namespace kmint {
 namespace play {
@@ -76,10 +81,13 @@ void stage::act(delta_time dt) {
   }
 
   if (reset) {
-    auto it = actors_.begin();
+    auto& it = actors_.begin();
     it += 4;
     while (it != actors_.end()) {
-    auto &aptr = *it;
+    if (typeid(*(*it).get()) == typeid(pig)) {
+        pig *piggy = (pig*)(*it).get();
+        kmint::pigisland::Evolution::getInstance().addPig(piggy->data(), 2);
+    }
     it = actors_.erase(it);
     }
   }

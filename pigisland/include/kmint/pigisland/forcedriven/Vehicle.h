@@ -26,6 +26,7 @@ public:
 
 	void updateHeading();
 
+
 private:
 	double _mass;
 	double _maxSpeed;
