@@ -12,17 +12,23 @@ namespace pigisland {
 
 pig::pig(math::vector2d location)
   : play::free_roaming_actor{location},
-    drawable_{ *this, pig_image() }, _dikkeBMW{10,30},
+    drawable_{ *this, pig_image() }, _dikkeBMW{1,30},
     _wander{0, 0, 10},
     _wanderPig(random_int(0,9) % 2)
 {
     if (_wanderPig)
     {
-        
-        std::cout << "Wander" << std::endl;
+        drawable_.set_tint(graphics::color{ 255,0,0 });
     }
     else {
-        std::cout << "Flocking" << std::endl;
+        //if (random_int(0, 4) == 3) {
+        //    _dikkeBMW._velocity = vector2d{ 30,5 };
+        //}
+        //else {
+        //    _dikkeBMW._velocity = vector2d{ 30,30 };
+        //}
+        _dikkeBMW.updateHeading();
+        drawable_.set_tint(graphics::color{ 0,255,0 });
     }
 }
 
@@ -47,16 +53,17 @@ void pig::act(delta_time dt) {
         }
     }
 
-    if (!_wanderPig)
+    if (_wanderPig)
     {
-        _dikkeBMW.takeTheWheel().flock(neighbours, Agent{ location(), getVehicle() }, 0.6, 0.3, 1);
+        _dikkeBMW.takeTheWheel().addForce(_wander.wander(_dikkeBMW, location()));
     }
     else {
-        _dikkeBMW.takeTheWheel().addForce(_wander.wander(_dikkeBMW, location()));
+        vector2d wanderForce = _wander.wander(_dikkeBMW, location());
+        //_dikkeBMW.takeTheWheel().flock(neighbours, Agent{ location(), getVehicle() }, 0, 1, 0);
+        //_dikkeBMW.takeTheWheel().addForce(wanderForce);
     }
 
     _dikkeBMW.takeTheWheel().avoidWall(Agent{ location(), getVehicle() });
-
     location(_dikkeBMW.updatePosition(to_seconds(dt), location()));
 }
 

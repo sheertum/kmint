@@ -137,10 +137,14 @@ Wander::Wander(float radius, float distance, float jitter) :
 
 vector2d Wander::wander(const Vehicle& vehicle, const kmint::math::vector2d& position)
 {
-	_target += vector2d{ random_scalar(-1, 1) * _jitter,
-							random_scalar(-1, 1) * _jitter };
+	if (random_int(0, 100) == 9)
+	{
+		_target = vehicle.heading() * _jitter * -1;
+	}
+	else {
+		_target += vector2d{ random_scalar(-1, 1) * _jitter,
+						random_scalar(-1, 1) * _jitter };
+	}
 
-
-
-	return _target;//worldTarget - position;
+	return _target;
 }

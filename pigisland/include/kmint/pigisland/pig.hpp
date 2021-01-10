@@ -19,7 +19,7 @@ public:
   void act(delta_time dt) override;
 
   bool perceptive() const override { return true; }
-  scalar perception_range() const override { return 160.0f; }
+  scalar perception_range() const override { return 100.0f; }
   bool incorporeal() const override { return false; }
   scalar collision_range() const override { return 16.0; }
 

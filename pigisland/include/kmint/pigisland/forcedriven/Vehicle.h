@@ -24,7 +24,6 @@ public:
 
 	kmint::math::vector2d _velocity;
 
-private:
 	void updateHeading();
 
 private:

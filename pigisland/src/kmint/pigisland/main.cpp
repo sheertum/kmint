@@ -60,7 +60,7 @@ int main() {
   //    node->tag(kmint::graph::node_tag::path);
   //}
 
-  auto locs = new_random_pig_locations(100);
+  auto locs = new_random_pig_locations(300);
   for (auto loc : locs) {
     s.build_actor<pigisland::pig>(loc);
   }
@@ -91,10 +91,10 @@ int main() {
         case ui::events::key::r:
           ctl.render = !ctl.render;
           break;
-        case ui::events::key::opening_bracket:
+        case ui::events::key::n:
           ctl.time_scale /= 2.0;
           break;
-        case ui::events::key::closing_bracket:
+        case ui::events::key::m:
           ctl.time_scale *= 2.0;
           break;
         case ui::events::key::d:
