@@ -21,7 +21,7 @@ namespace pigisland {
   void RestingState::think(){
     calculateNextStep();
     if(_energy == 100){
-      //context->resetPigs();
+      context->resetPigs();
       context->updateState(updateTransitionState(this));
     }
   }

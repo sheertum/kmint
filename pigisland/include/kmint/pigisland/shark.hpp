@@ -29,14 +29,13 @@ public:
 
   play::image_drawable& getDrawable() { return drawable_; }
   void updateState(std::unique_ptr<State> newState);
-  std::function<void()> resetPigs;
 
+  std::function<void()> resetPigs;
 private:
   // hoeveel tijd is verstreken sinds de laatste beweging
   delta_time t_passed_{};
   // weet hoe de koe getekend moet worden
   play::image_drawable drawable_;
-
   std::unique_ptr<State> _state;
 };
 

@@ -92,16 +92,17 @@ public:
   const_iterator cend() const;
   const_iterator begin() const;
   const_iterator end() const;
+  bool reset {false};
 
 private:
   void check_interactions();
   math::size size_;
+  container actors_{};
 
   friend class stage_overlay;
   std::unique_ptr<stage_overlay> overlay_;
   std::optional<quad_tree<4>> m_quad_tree_;
 
-  container actors_{};
   bool acting_{};
 };
 } // namespace play

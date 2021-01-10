@@ -12,7 +12,7 @@
 
 namespace kmint {
 namespace pigisland {
-    State::State(map::map_graph& graph) : _graph{ graph }, _energy{ 100 }, _smellTarget{ nullptr }, context{ nullptr }, _restTarget{ nullptr }, _isScared{ false }, _stateColor{ 0,0,0 }{
+  State::State(map::map_graph& graph) : _graph{ graph }, _energy{ 100 }, _smellTarget{ nullptr }, context{ nullptr }, _restTarget{ nullptr }, _isScared{ false }, _stateColor{ 0,0,0 }{
     _restTarget = &find_node_of_kind(graph, 'K');
   }
 
