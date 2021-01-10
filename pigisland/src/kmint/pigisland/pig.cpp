@@ -58,9 +58,7 @@ void pig::act(delta_time dt) {
         _dikkeBMW.takeTheWheel().addForce(_wander.wander(_dikkeBMW, location()));
     }
     else {
-        vector2d wanderForce = _wander.wander(_dikkeBMW, location());
-        //_dikkeBMW.takeTheWheel().flock(neighbours, Agent{ location(), getVehicle() }, 0, 1, 0);
-        //_dikkeBMW.takeTheWheel().addForce(wanderForce);
+        _dikkeBMW.takeTheWheel().flock(neighbours, Agent{ location(), getVehicle() }, 0, 1, 1);
     }
 
     _dikkeBMW.takeTheWheel().avoidWall(Agent{ location(), getVehicle() });
