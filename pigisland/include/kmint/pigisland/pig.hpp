@@ -31,6 +31,7 @@ private:
   play::image_drawable drawable_;
   Vehicle _dikkeBMW;
   Wander _wander;
+  double _cohesion, _seperation, _alignment, _sharkLikeNess, _boatFetisj;
 };
 
 } // namespace pigisland

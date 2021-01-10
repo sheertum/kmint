@@ -14,27 +14,18 @@ pig::pig(math::vector2d location)
   : play::free_roaming_actor{location},
     drawable_{ *this, pig_image() }, _dikkeBMW{0.5,30},
     _wander{0, 0, 10},
-    _wanderPig(random_int(0,9) % 2)
+    _wanderPig{ false },//(random_int(0,9) % 2),
+    _cohesion{random_scalar(0,1)},
+    _seperation{ random_scalar(0,1) },
+    _alignment{ random_scalar(0,1) },
+    _sharkLikeNess{ random_scalar(-1,1) },
+    _boatFetisj{ random_scalar(-1,1) }
 {
-    if (_wanderPig)
-    {
-        drawable_.set_tint(graphics::color{ 255,0,0 });
-    }
-    else {
-        //if (random_int(0, 4) == 3) {
-        //    _dikkeBMW._velocity = vector2d{ 30,5 };
-        //}
-        //else {
-        //    _dikkeBMW._velocity = vector2d{ 30,30 };
-        //}
-        _dikkeBMW.updateHeading();
-        drawable_.set_tint(graphics::color{ 0,255,0 });
-    }
+    drawable_.set_tint(graphics::color{ (uint8_t)(255*_cohesion),(uint8_t)(255*_seperation),(uint8_t)(255*_alignment) });
 }
 
 void pig::act(delta_time dt) {
     _dikkeBMW.takeTheWheel().flushForces();
-    //_dikkeBMW.takeTheWheel().addForce(_dikkeBMW.resitanceVector(to_seconds(dt)));
 
     std::list<Agent> neighbours;
 
@@ -46,10 +37,10 @@ void pig::act(delta_time dt) {
             const pig&  piggy = (const pig&)a;
             neighbours.push_back(Agent{ a.location(), piggy.getVehicle()});
         }else if (typeid(a) == typeid(shark)) {
-            _dikkeBMW.takeTheWheel().flee(a.location(), _dikkeBMW, location(), 1);
+            _dikkeBMW.takeTheWheel().flee(a.location(), _dikkeBMW, location(), _sharkLikeNess);
         }
         else if (typeid(a) == typeid(boat)) {
-            _dikkeBMW.takeTheWheel().seek(a.location(), _dikkeBMW, location(), 1);
+            _dikkeBMW.takeTheWheel().seek(a.location(), _dikkeBMW, location(), _boatFetisj);
         }
     }
 
@@ -58,7 +49,7 @@ void pig::act(delta_time dt) {
         _dikkeBMW.takeTheWheel().addForce(_wander.wander(_dikkeBMW, location()));
     }
     else {
-        _dikkeBMW.takeTheWheel().flock(neighbours, Agent{ location(), getVehicle() }, 0, 1, 1);
+        _dikkeBMW.takeTheWheel().flock(neighbours, Agent{ location(), getVehicle() }, _cohesion, _seperation, _alignment);
     }
 
     _dikkeBMW.takeTheWheel().avoidWall(Agent{ location(), getVehicle() });
