@@ -3,6 +3,7 @@
 
 #include "kmint/play.hpp"
 #include "forcedriven/Vehicle.h"
+#include "forcedriven/Wander.h"
 
 #include <tuple>
 #include <vector>
@@ -18,7 +19,7 @@ public:
   void act(delta_time dt) override;
 
   bool perceptive() const override { return true; }
-  scalar perception_range() const override { return 200.f; }
+  scalar perception_range() const override { return 160.0f; }
   bool incorporeal() const override { return false; }
   scalar collision_range() const override { return 16.0; }
 
@@ -26,8 +27,10 @@ public:
   Vehicle& getVehicle();
 
 private:
+  bool _wanderPig;
   play::image_drawable drawable_;
   Vehicle _dikkeBMW;
+  Wander _wander;
 };
 
 } // namespace pigisland

@@ -41,8 +41,19 @@ vector2d Wheel::seperate(const vector2d& neighbour, const vector2d& currentPosit
 	return normalize(toNeighbour) / toNeighbour.length();
 }
 
+double Wheel::toFlockingValue(double value) const{
+	if (value > 1)
+	{
+		value = 1;
+	}
+	return (1 / (1.001 - value))*value;
+}
 
 void Wheel::flock(const std::list<Agent>& neighbours, const Agent& actingAgent, double cohesion, double seperation, double alignment) {
+	cohesion = toFlockingValue(cohesion);
+	seperation = toFlockingValue(seperation);
+	alignment = toFlockingValue(alignment);
+
 	vector2d groupCenter{ 0,0 };
 	vector2d seperationForce{ 0,0 };
 	vector2d heading{0,0};

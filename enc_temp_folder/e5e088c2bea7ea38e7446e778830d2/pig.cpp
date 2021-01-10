@@ -18,7 +18,6 @@ pig::pig(math::vector2d location)
 {
     if (_wanderPig)
     {
-        
         std::cout << "Wander" << std::endl;
     }
     else {

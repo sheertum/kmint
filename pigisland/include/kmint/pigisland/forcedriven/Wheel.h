@@ -28,6 +28,7 @@ public:
 	void avoidWall(const Agent&);
 
 private:
+	double toFlockingValue(double value) const;
 	kmint::math::vector2d exponatial(const kmint::math::vector2d& current, const kmint::math::vector2d& max, double lowestDivider = std::numeric_limits<double>::denorm_min(), double toDivide = 1) const;
 	double exponatial(double current, double max, double lowestDivider = std::numeric_limits<double>::denorm_min(), double toDivide = 1) const;
 

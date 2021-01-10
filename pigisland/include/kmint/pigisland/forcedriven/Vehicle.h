@@ -16,6 +16,7 @@ public:
 	const Wheel& takeTheWheel() const;
 
 	const kmint::math::vector2d& heading() const;
+	const kmint::math::vector2d& side() const;
 
 	kmint::math::vector2d resitanceVector(double dt) const;
 
@@ -29,7 +30,7 @@ private:
 private:
 	double _mass;
 	double _maxSpeed;
-	double _resistance{300000};
+	double _resistance{1};
 	kmint::math::vector2d _heading;
 	kmint::math::vector2d _right;
 	Wheel _wheel;

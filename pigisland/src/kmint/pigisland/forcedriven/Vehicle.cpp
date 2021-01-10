@@ -6,7 +6,8 @@ using namespace kmint::math;
 Vehicle::Vehicle(double mass, double maxSpeed, const kmint::math::vector2d& startingVelocity) :
 _mass{mass},
 _maxSpeed{maxSpeed},
-_velocity{startingVelocity}
+_velocity{startingVelocity},
+_heading{ vector2d{0,1} }
 {
 	updateHeading();
 }
@@ -57,6 +58,10 @@ const vector2d& Vehicle::velocity() const {
 
 const vector2d& Vehicle::heading() const {
 	return _heading;
+}
+
+const vector2d& Vehicle::side() const {
+	return _right;
 }
 
 vector2d Vehicle::resitanceVector(double dt) const {

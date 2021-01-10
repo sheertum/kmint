@@ -23,7 +23,6 @@ add_executable(pigisland
   src/kmint/pigisland/states/hunting.cpp
   src/kmint/pigisland/states/rest.cpp
   src/kmint/pigisland/states/flee.cpp
-  src/kmint/pigisland/states/state_machine.cpp
   src/kmint/pigisland/AStar/AStar.cpp
   src/kmint/pigisland/forcedriven/Wheel.cpp
   src/kmint/pigisland/forcedriven/Vehicle.cpp
@@ -33,8 +32,7 @@ add_executable(pigisland
   src/kmint/pigisland/probabilistic/boat_wander.cpp
   src/kmint/pigisland/probabilistic/boat_basestate.cpp
   src/kmint/pigisland/probabilistic/boat_repair.cpp
-  include/kmint/pigisland/PriorityMap.hpp
-  )
+  include/kmint/pigisland/PriorityMap.hpp "src/kmint/pigisland/forcedriven/Wander.cpp")
 
 target_compile_features(pigisland PUBLIC cxx_std_17)
 target_link_libraries(pigisland PRIVATE kmint)
