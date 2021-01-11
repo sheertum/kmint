@@ -34,7 +34,11 @@ std::list<Node*> AStar::getPath(Node& start, Node& end, bool& found, bool draw)
 
 	while (!open.empty()) {
 		Node& current = *open.top().key;
-		//current.tag(kmint::graph::node_tag::path);
+		if (draw)
+		{
+			current.tag(kmint::graph::node_tag::visited);
+		}
+
 		if (&current == &end) {
 			found = true;
 			return constructPath(from, current);
@@ -78,6 +82,7 @@ std::list<Node*> AStar::constructPath(std::map<Node*,Node*>& from, Node& current
 	
 	while (from.find(temp) != from.end()) {
 		temp = from[temp];
+		temp->tag(kmint::graph::node_tag::path);
 		path.push_back(temp);
 	}
 
