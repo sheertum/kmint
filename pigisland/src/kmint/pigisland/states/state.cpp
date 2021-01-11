@@ -71,7 +71,8 @@ namespace pigisland {
   void State::createPath(Node* target){
     auto& start = find_closest_node_to(_graph, context->location()) ;
     bool found;
-    _path = AStar::getPath(start, *target, found);
+    _graph.untag_all();
+    _path = AStar::getPath(start, *target, found, true);
     _nextPathStep = _path.end();
     _nextPathStep--;
   }
